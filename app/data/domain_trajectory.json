@@ -1,0 +1,12 @@
+{
+ "source": "Paper/LATEST/AIForDiscovery_Alex_AAAI27/Figures/domain_trajectory_stanford.pdf, Appendix §B.3 (fig:eacDom) — values read from vector marker positions against the printed axis ticks",
+ "rounds": [0, 1, 2, 3, 4, 5],
+ "domains": [
+  {"name": "NLP", "v0_human": 3.92, "ours": [3.92, 4.67, 5.24, 5.53, 5.95, 5.98]},
+  {"name": "CV", "v0_human": 2.48, "ours": [2.48, 4.14, 4.48, 5.48, 5.14, 5.81]},
+  {"name": "Graph", "v0_human": 3.98, "ours": [3.98, 4.81, 5.48, 5.48, 6.14, 6.14]},
+  {"name": "Time Series", "v0_human": 4.31, "ours": [4.31, 4.81, 5.48, 6.14, 5.81, 6.14]},
+  {"name": "RL", "v0_human": 4.14, "ours": [4.14, 4.14, 4.81, 5.14, 5.81, 5.81]}
+ ],
+ "note": "Round 0 is the mean human venue-review score for that domain. Rounds 1–5 are scored by our reviewer. Stanford Reviewer's independent scoring of the same revisions is shown in the paper's figure but not digitized here."
+}

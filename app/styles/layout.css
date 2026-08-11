@@ -1,0 +1,414 @@
+/* ============================================================
+   AppliedScientist — layout
+   One centered column. Sections are separated by space and a
+   consistent header pattern (kicker → title → lede), never by
+   rules scattered through the text.
+   ============================================================ */
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--page);
+  border: 1px solid var(--ink);
+  padding: 0.5rem 0.8rem;
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  z-index: 100;
+}
+.skip-link:focus { left: 0.5rem; top: 0.5rem; }
+
+/* ---------- masthead: the one sticky line on the page ---------- */
+
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--page) 90%, transparent);
+  backdrop-filter: saturate(1.1) blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.masthead-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+  height: 3.4rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.masthead-name {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 0;
+  white-space: nowrap;
+}
+.masthead-name:hover { color: var(--link); }
+.masthead-nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto;
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+}
+.masthead-nav a {
+  color: var(--ink-faint);
+  border-bottom: 0;
+  padding: 0.2rem 0;
+  transition: color var(--dur) var(--ease);
+}
+.masthead-nav a:hover { color: var(--ink); }
+.masthead-cta {
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  font-weight: 600;
+  color: var(--page);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  padding: 0.34rem 0.85rem;
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease);
+}
+.masthead-cta:hover { background: var(--link); border-bottom-color: var(--ink); }
+@media (max-width: 900px) { .masthead-nav { display: none; } }
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding: clamp(3.5rem, 9vh, 6rem) 0 clamp(2.5rem, 6vh, 4rem);
+}
+.hero-title {
+  font-size: var(--t-hero);
+  line-height: 1.08;
+  letter-spacing: -0.014em;
+  max-width: 21ch;
+}
+.hero-authors {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  color: var(--ink-faint);
+  margin-top: 1.2rem;
+}
+.hero-lead {
+  font-size: var(--t-lead);
+  line-height: 1.55;
+  max-width: 39rem;
+  margin-top: 1.8rem;
+  color: var(--ink);
+}
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.4rem;
+  margin-top: 2rem;
+  font-family: var(--sans);
+  font-size: var(--t-small);
+}
+.hero-links .soon {
+  color: var(--ink-ghost);
+}
+
+/* headline results: one strong rule above, like a table that
+   opens the paper — the single most deliberate rule on the page */
+.hero-stats {
+  margin-top: 2.8rem;
+  padding-top: 1.6rem;
+  border-top: 1.5px solid var(--rule-strong);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  max-width: 56rem;
+}
+.stat-value {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+.stat[data-flag="true"] .stat-value { color: var(--flag); }
+.stat-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin-top: 0.5rem;
+}
+.stat-sub {
+  display: block;
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  margin-top: 0.3rem;
+}
+@media (max-width: 700px) {
+  .hero-stats { grid-template-columns: 1fr; gap: 1.4rem; }
+}
+
+/* ---------- sections ---------- */
+
+.section {
+  padding: clamp(3rem, 8vh, 5rem) 0;
+  scroll-margin-top: 4.5rem;
+}
+.section + .section { padding-top: clamp(2rem, 6vh, 3.5rem); }
+
+.sec-head { max-width: var(--measure); margin-bottom: 2.2rem; }
+.sec-kicker {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--sans);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--link);
+  margin-bottom: 0.9rem;
+}
+.sec-kicker .sec-no { color: var(--ink-ghost); }
+.sec-title { font-size: var(--t-h2); }
+.sec-lede {
+  font-size: var(--t-lead);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-top: 1rem;
+}
+
+/* prose inside a section never becomes a wall */
+.prose { max-width: var(--measure); }
+.prose p + p { margin-top: -0.1rem; }
+
+/* supporting facts under a headline figure, set as a quiet row */
+.fact-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2rem 2.2rem;
+  margin-top: 1.6rem;
+  max-width: var(--fig-max);
+}
+@media (max-width: 860px) { .fact-row { grid-template-columns: repeat(2, 1fr); } }
+.fact { min-width: 9rem; }
+.fact-value {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1.1;
+}
+.fact-value .arr { color: var(--ink-ghost); font-weight: 400; }
+.fact-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  color: var(--ink-faint);
+  line-height: 1.4;
+  margin-top: 0.3rem;
+  max-width: 15rem;
+}
+
+/* ---------- three conditions: the experimental design ---------- */
+
+.conditions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  max-width: var(--fig-max);
+}
+.condition-name {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  font-weight: 600;
+  color: var(--ink);
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--rule-mid);
+  margin-bottom: 0.7rem;
+}
+.condition p {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.condition .condition-tag {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  display: block;
+  margin-bottom: 0.7rem;
+}
+@media (max-width: 800px) { .conditions { grid-template-columns: 1fr; gap: 1.8rem; } }
+
+/* ---------- the finding, stated once, large ---------- */
+
+.finding {
+  max-width: var(--measure);
+  margin: 2.4rem 0;
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--ink);
+  font-size: var(--t-lead);
+  line-height: 1.5;
+}
+.finding em { font-style: italic; }
+
+/* ---------- inline disclosure: quiet, one marker, no rules ---------- */
+
+.detail { margin-top: 2rem; max-width: var(--fig-max); }
+.detail > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--link);
+  padding: 0.2rem 0;
+}
+.detail > summary::-webkit-details-marker { display: none; }
+.detail > summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+.detail > summary:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+.detail-mark {
+  width: 1.3rem;
+  height: 1.3rem;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--link) 45%, transparent);
+  border-radius: 50%;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform var(--dur) var(--ease);
+}
+.detail[open] .detail-mark { transform: rotate(45deg); }
+.detail-count {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: var(--t-meta);
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+.detail-body { padding: 1.2rem 0 0.5rem; }
+
+/* subheadings inside a section or detail: real headings, not whispers */
+.detail-kicker,
+.subhead {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  margin: 2.4rem 0 0.9rem;
+}
+.detail-kicker:first-child { margin-top: 0; }
+.detail-note {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+  margin-top: 0.8rem;
+}
+
+/* ---------- run records ---------- */
+
+.runs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem;
+  max-width: var(--fig-max);
+}
+@media (max-width: 860px) { .runs { grid-template-columns: 1fr; } }
+.run-head { margin-bottom: 0.9rem; }
+.run-title { font-size: var(--t-h3); font-weight: 600; }
+.run-meta {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  display: block;
+  margin-top: 0.4rem;
+}
+.run-spark { max-width: 230px; margin: 0.9rem 0; }
+.run p { font-size: var(--t-small); color: var(--ink-soft); }
+
+/* quoted review text: the one element that keeps a side bar,
+   because a quotation needs a visible edge */
+blockquote.review {
+  margin: 1.1rem 0;
+  padding: 0.1rem 0 0.1rem 1rem;
+  border-left: 2px solid var(--rule-mid);
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+blockquote.review p { margin-bottom: 0.6em; }
+blockquote.review cite {
+  display: block;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: var(--t-meta);
+  color: var(--ink-faint);
+  margin-top: 0.5rem;
+}
+.run-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin-top: 1rem;
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+}
+
+/* ---------- footer: citation and provenance ---------- */
+
+.colophon {
+  margin-top: 3rem;
+  border-top: 1.5px solid var(--rule-strong);
+  padding: 2.6rem 0 3.5rem;
+}
+.colophon-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 3rem;
+}
+@media (max-width: 800px) { .colophon-grid { grid-template-columns: 1fr; } }
+.colophon h2 { font-size: var(--t-h3); font-family: var(--sans); font-weight: 600; }
+pre.bibtex {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  background: var(--surface-1);
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  margin: 1rem 0 1.2rem;
+}
+.colophon-note {
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  line-height: 1.6;
+  color: var(--ink-faint);
+  max-width: 34rem;
+}
+.colophon-facts { display: flex; flex-direction: column; gap: 1.1rem; }
+.colophon-fact .label { display: block; margin-bottom: 0.25rem; }
+.colophon-fact p {
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  color: var(--ink-soft);
+}

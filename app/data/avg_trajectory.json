@@ -1,0 +1,49 @@
+{
+ "rounds": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "series": [
+  {
+   "key": "human",
+   "label": "Human-initialized (our reviewer)",
+   "values": [
+    5.37,
+    4.84,
+    5.32,
+    5.68,
+    6.0,
+    6.17
+   ]
+  },
+  {
+   "key": "stanford",
+   "label": "Stanford Reviewer (independent)",
+   "values": [
+    5.5,
+    5.13,
+    5.37,
+    5.55,
+    5.83,
+    5.92
+   ]
+  },
+  {
+   "key": "self",
+   "label": "AppliedScientist with a self-review prompt",
+   "values": [
+    null,
+    3.91,
+    4.06,
+    4.17,
+    4.3,
+    4.38
+   ],
+   "note": "Same scientist, no reviewer feedback."
+  }
+ ]
+}

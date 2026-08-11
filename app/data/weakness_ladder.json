@@ -1,0 +1,71 @@
+{
+ "categories": [
+  {
+   "name": "Presentation & clarity",
+   "resolved": 24,
+   "total": 24,
+   "rate": 100.0,
+   "ci": [
+    86.0,
+    100.0
+   ],
+   "kind": "execution"
+  },
+  {
+   "name": "Ablations & analysis",
+   "resolved": 45,
+   "total": 48,
+   "rate": 94.0,
+   "ci": [
+    83.0,
+    98.0
+   ],
+   "kind": "execution"
+  },
+  {
+   "name": "Rigor & validity",
+   "resolved": 32,
+   "total": 37,
+   "rate": 86.0,
+   "ci": [
+    72.0,
+    94.0
+   ],
+   "kind": "execution"
+  },
+  {
+   "name": "Baselines & comparison",
+   "resolved": 10,
+   "total": 14,
+   "rate": 71.0,
+   "ci": [
+    45.0,
+    88.0
+   ],
+   "kind": "execution"
+  },
+  {
+   "name": "Scope & generalization",
+   "resolved": 17,
+   "total": 27,
+   "rate": 63.0,
+   "ci": [
+    44.0,
+    78.0
+   ],
+   "kind": "execution"
+  },
+  {
+   "name": "Idea / novelty",
+   "resolved": 2,
+   "total": 18,
+   "rate": 11.1,
+   "ci": [
+    3.0,
+    33.0
+   ],
+   "kind": "idea"
+  }
+ ],
+ "note": "168 venue-named weaknesses hand-classified (main session, 2026-07-25). Execution counts resolved+partial; idea counts resolved only. Wilson 95% CI."
+}

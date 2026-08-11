@@ -1,0 +1,345 @@
+/* ============================================================
+   Figures — paper fidelity: hairline axes, sans labels, tabular
+   numerals, no fills that carry no information.
+   ============================================================ */
+
+figure.fig {
+  margin: 2rem 0 0;
+  max-width: var(--fig-max);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+figcaption.caption { margin-top: 0; }
+
+.figure-interactive { display: block; }
+.figure-interactive svg { display: block; overflow: visible; }
+
+/* axis furniture */
+.ax-tick {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  fill: var(--ink-soft);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.ax-title {
+  font-family: var(--sans);
+  font-size: 13px;
+  fill: var(--ink);
+}
+
+/* direct series labels at line ends */
+.ser-label {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.ser-name { font-family: var(--sans); font-size: 11.5px; }
+
+/* weakness bars */
+.cat-name { font-family: var(--sans); font-size: 13px; }
+.bar-value {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.bar-pct {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* slope chart */
+.slope-end {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.slope-label { font-family: var(--sans); font-size: 12px; }
+
+/* scatter labels */
+.pt-label { font-family: var(--sans); font-size: 12px; }
+.pt-key { font-family: var(--sans); font-size: 11px; }
+
+/* sparkline end value */
+.spark-end {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+  fill: var(--ink);
+}
+.spark-tick {
+  font-size: 8.5px;
+  font-family: var(--sans);
+  font-weight: 600;
+  fill: var(--ink-soft);
+}
+
+/* ---------- readout strip under an interactive figure ---------- */
+
+.fig-readout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 1.1rem;
+  margin-top: 0.6rem;
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  color: var(--ink-soft);
+  min-height: 2.1rem;
+}
+.fig-readout-idle { color: var(--ink-faint); }
+.fig-readout-round { font-family: var(--mono); font-weight: 500; color: var(--ink); }
+.fig-readout-item { display: inline-flex; align-items: baseline; gap: 0.35rem; }
+.fig-readout-item i {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  transform: translateY(-1px);
+}
+.fig-readout-item b {
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* ---------- legend as isolate control ---------- */
+
+.fig-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  margin-top: 0.6rem;
+}
+.legend-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: none;
+  border: 0;
+  padding: 0.15rem 0;
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  color: var(--ink-faint);
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+.legend-btn:hover { color: var(--ink); }
+.legend-btn[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.legend-btn:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.legend-reset { font-style: italic; }
+
+/* ---------- compare switch atop a trajectory figure ---------- */
+
+.compare-switch {
+  display: inline-flex;
+  gap: 0.15rem;
+  margin-bottom: 0.9rem;
+  border: 1px solid var(--rule-mid);
+  border-radius: 3px;
+  padding: 2px;
+}
+.compare-switch button {
+  background: var(--page);
+  border: 0;
+  border-radius: 2px;
+  padding: 0.36rem 0.9rem;
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-weight: 500;
+}
+.compare-switch button:hover { color: var(--ink); background: var(--surface-1); }
+.compare-switch button[aria-selected="true"] {
+  background: var(--ink);
+  color: var(--page);
+  font-weight: 600;
+}
+.compare-switch button:focus-visible { outline: 2px solid var(--link); outline-offset: 1px; }
+
+/* ---------- diagram ---------- */
+
+.dg-title { font-family: var(--sans); font-size: 14px; font-weight: 600; fill: var(--ink); }
+.dg-sub { font-family: var(--sans); font-size: 11.5px; fill: var(--ink-soft); }
+.dg-note { font-family: var(--sans); font-size: 10.5px; font-style: italic; fill: var(--ink-faint); }
+.dg-edge { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); }
+.dg-meta {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  fill: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- small multiples: cells float on whitespace — the
+   grid is implied by alignment, not drawn with lines ---------- */
+
+.multiples {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.8rem 1.2rem;
+}
+@media (max-width: 980px) { .multiples { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px) { .multiples { grid-template-columns: repeat(2, 1fr); } }
+.multiple {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.multiple-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.multiple-id {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+}
+.multiple-delta {
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--ink);
+}
+.multiple-delta[data-dir="down"] { color: var(--s-flag); }
+.multiple-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.6rem;
+}
+.multiple-domain {
+  font-family: var(--sans);
+  font-size: var(--t-micro);
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+.multiple-flag {
+  font-family: var(--sans);
+  font-size: var(--t-micro);
+  color: var(--s-flag);
+}
+
+/* ---------- size caps: charts are composed at a chosen width ---------- */
+.figure-interactive[data-size="small"] { max-width: 470px; }
+.figure-interactive[data-size="medium"] { max-width: 730px; }
+.figure-interactive[data-size="large"] { max-width: 900px; }
+
+/* on narrow screens a scaled-down chart is unreadable — let it keep its
+   composed size and scroll sideways instead */
+@media (max-width: 700px) {
+  .figure-interactive[data-size="large"],
+  .figure-interactive[data-size="medium"] { overflow-x: auto; }
+  .figure-interactive[data-size="large"] svg { min-width: 620px; }
+  .figure-interactive[data-size="medium"] svg { min-width: 520px; }
+}
+
+/* ---------- legend key under a plot ---------- */
+.fig-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1.1rem;
+  margin: 0.7rem 0 0;
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  color: var(--ink-faint);
+}
+.key-glyph { width: 9px; height: 9px; display: inline-block; margin-right: 0.1rem; }
+.key-ours { background: var(--s-human); border-radius: 50%; }
+.key-other { border: 1.5px solid var(--s-stanford); }
+
+/* ---------- tables: booktabs. The only ruled elements in the
+   document body — top and bottom rules, one header rule, done. */
+
+table.tbl {
+  width: 100%;
+  max-width: var(--fig-max);
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+table.tbl caption {
+  caption-side: top;
+  text-align: left;
+  font-size: var(--t-meta);
+  color: var(--ink-soft);
+  padding-bottom: 0.75rem;
+  line-height: 1.5;
+}
+table.tbl thead th {
+  font-weight: 600;
+  text-align: right;
+  padding: 0.4rem 0.55rem;
+  border-bottom: 1px solid var(--rule-strong);
+  color: var(--ink);
+  white-space: nowrap;
+}
+table.tbl thead tr:first-child th { border-top: 1.5px solid var(--rule-strong); padding-top: 0.55rem; }
+table.tbl th:first-child, table.tbl td:first-child { text-align: left; padding-left: 0; }
+table.tbl th:last-child, table.tbl td:last-child { padding-right: 0; }
+table.tbl tbody td {
+  padding: 0.34rem 0.55rem;
+  text-align: right;
+  border-bottom: 0;              /* rows breathe; no per-row hairlines */
+  color: var(--ink-soft);
+}
+table.tbl tbody tr:last-child td { border-bottom: 1.5px solid var(--rule-strong); padding-bottom: 0.55rem; }
+table.tbl tbody td:first-child { color: var(--ink); }
+table.tbl tbody tr.group-top td { border-top: 1px solid var(--rule-mid); }
+table.tbl .best { font-weight: 600; color: var(--ink); }
+
+.tbl-scroll { overflow-x: auto; margin: 1rem 0 0; }
+
+/* table internals */
+.group-name {
+  font-family: var(--sans);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: left;
+  padding: 0.7rem 0 0.3rem;
+}
+.win { color: var(--ink); font-weight: 600; }
+.loss { color: var(--ink-faint); }
+.wl-sep { color: var(--rule-mid); }
+
+/* two figures side by side, each keeping its own caption */
+.slope-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  max-width: var(--fig-max);
+}
+@media (max-width: 900px) { .slope-pair { grid-template-columns: 1fr; } }
+
+/* lists inside details */
+ul.plain-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: var(--measure);
+}
+ul.plain-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.7rem;
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+}
+ul.plain-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--ink-ghost);
+}

@@ -1,0 +1,115 @@
+/* ============================================================
+   AppliedScientist — base
+   Serif leads for prose and headings (a paper, on screen);
+   sans for labels; mono for numerals where alignment matters.
+   ============================================================ */
+
+@font-face { font-family: "STIX Two Text"; src: url("/fonts/stix-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "STIX Two Text"; src: url("/fonts/stix-400i.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "STIX Two Text"; src: url("/fonts/stix-600.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "STIX Two Text"; src: url("/fonts/stix-700.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("/fonts/plexsans-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("/fonts/plexsans-600.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/plexmono-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/plexmono-500.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- prose ---------- */
+
+p { margin: 0 0 0.85em; }
+p:last-child { margin-bottom: 0; }
+
+em { font-style: italic; }
+strong { font-weight: 600; }
+
+/* numerals inside prose: lining + tabular so decimals align */
+.num, td.num, .stat-value {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "onum" 0, "tnum" 1, "lnum" 1;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--link) 30%, transparent);
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+a:hover { border-bottom-color: var(--link); }
+a:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+/* ---------- headings: serif, like the paper ---------- */
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.008em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* small-caps label, used for kickers, figure numbers, table labels */
+.label {
+  font-family: var(--sans);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ---------- captions ---------- */
+
+.caption {
+  font-family: var(--sans);
+  font-size: var(--t-meta);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 46rem;
+}
+.caption .cap-num {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---------- selection ---------- */
+::selection { background: var(--link-wash); }
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

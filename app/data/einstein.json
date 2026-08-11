@@ -1,0 +1,12 @@
+{
+ "problem": "Uncertainty principle (upper bound), minimization",
+ "our_score": 0.318074,
+ "our_rank": 3,
+ "previous_best": 0.328271,
+ "previous_best_by": "AlphaEvolve",
+ "abs_delta_vs_previous": 0.010197,
+ "rel_delta_pct": 3.1,
+ "gap_to_first": 2e-06,
+ "leaderboard_url": "https://einsteinarena.com/problems/uncertainty-principle",
+ "certificate": "k = 17 double roots, exact-verified S = 0.31807399514546"
+}

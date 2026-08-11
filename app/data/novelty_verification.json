@@ -1,0 +1,26 @@
+{
+ "source": "Paper/Appendix.tex, §B.4 Verifying Novelty Objections (app:citations), Table tab:citations",
+ "n_objections_examined": 17,
+ "n_papers": 13,
+ "n_cite_prior_work": 14,
+ "n_unverifiable": 3,
+ "unverifiable_reasons": "Two no longer contained citations because the reviewer removed them in the final revision; one concerned an internal claim rather than a comparison with prior work.",
+ "n_citations_verified": "23/23",
+ "rows": [
+  {"id": "01", "cited": "iML; AIDE; Agent K; SELA", "verified": true},
+  {"id": "02", "cited": "Bijection Learning (2410.01294); ACE/LACE", "verified": true},
+  {"id": "03", "cited": "AREG; MixTalk", "verified": true},
+  {"id": "05", "cited": "Beyond Frequency: Role of Redundancy", "verified": true},
+  {"id": "06", "cited": "In-context interference (2309.12727)", "verified": true},
+  {"id": "06", "cited": "LifelongAgentBench (2505.11942)", "verified": true},
+  {"id": "08", "cited": "Merullo et al. (2024)", "verified": true},
+  {"id": "09", "cited": "Context is the Key (2409.04142)", "verified": true},
+  {"id": "10", "cited": "Ehrhardt et al. (2019); Agrawal et al. (2016)", "verified": true},
+  {"id": "12", "cited": "Lee et al. (2023); Zaheer et al. (2017)", "verified": true},
+  {"id": "14", "cited": "Original OMOG (2412.00315)", "verified": true},
+  {"id": "16", "cited": "Authors' prior work (2409.12915)", "verified": true},
+  {"id": "18", "cited": "ARS framework", "verified": true},
+  {"id": "20", "cited": "TRAMA (ICLR 2025)", "verified": true},
+  {"id": "15, 17", "cited": "no citation given", "verified": null}
+ ]
+}

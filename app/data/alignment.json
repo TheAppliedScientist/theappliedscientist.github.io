@@ -1,0 +1,29 @@
+{
+ "n_papers": 650,
+ "systems": [
+  {
+   "name": "Ours (DeepSeek V4 Flash)",
+   "rho": 0.571,
+   "agreement": 76.2,
+   "ours": true
+  },
+  {
+   "name": "Ours (Kimi K3)",
+   "rho": 0.522,
+   "agreement": 72.8,
+   "ours": true
+  },
+  {
+   "name": "Stanford Reviewer",
+   "rho": 0.51,
+   "agreement": 71.1,
+   "ours": false
+  },
+  {
+   "name": "Ours (MiniMax M2.7)",
+   "rho": 0.48,
+   "agreement": 67.2,
+   "ours": true
+  }
+ ]
+}

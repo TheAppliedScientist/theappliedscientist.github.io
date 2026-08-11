@@ -1,0 +1,51 @@
+{
+ "source": "Paper/LATEST/AIForDiscovery_Alex_AAAI27/Figures/agenticjudge_comparison.pdf, Appendix §A.2 (fig:agenticJudge)",
+ "n_papers": 115,
+ "criteria": ["overlap", "fabrication", "calibration"],
+ "criteria_labels": {
+  "overlap": "Issue overlap",
+  "fabrication": "Fabrication",
+  "calibration": "Calibration"
+ },
+ "note": "Reward is the mean of the three discriminative criteria (Comprehension and Substance are excluded — they saturate above 0.95 across all systems and are reported separately as sanity checks, not part of this figure).",
+ "rows": [
+  {"name": "CycleReviewer-8B", "group": "Fine-tuned", "overlap": 0.184, "fabrication": 0.304, "calibration": 0.214, "reward_mean": 0.26},
+  {"name": "CycleReviewer-70B", "group": "Fine-tuned", "overlap": 0.194, "fabrication": 0.294, "calibration": 0.234, "reward_mean": 0.27},
+  {"name": "DeepReviewer-7B", "group": "Fine-tuned", "overlap": 0.254, "fabrication": 0.344, "calibration": 0.284, "reward_mean": 0.32},
+  {"name": "DeepReviewer-14B", "group": "Fine-tuned", "overlap": 0.234, "fabrication": 0.364, "calibration": 0.284, "reward_mean": 0.32},
+  {"name": "Gemini 3.1 Flash", "group": "Single Agent", "overlap": 0.314, "fabrication": 0.454, "calibration": 0.394, "reward_mean": 0.41},
+  {"name": "Gemini 3.1 Pro", "group": "Single Agent", "overlap": 0.344, "fabrication": 0.564, "calibration": 0.424, "reward_mean": 0.47},
+  {"name": "Deepseek v4 Flash", "group": "Single Agent", "overlap": 0.324, "fabrication": 0.584, "calibration": 0.534, "reward_mean": 0.51},
+  {"name": "Deepseek v4 Pro", "group": "Single Agent", "overlap": 0.314, "fabrication": 0.554, "calibration": 0.504, "reward_mean": 0.48},
+  {"name": "Gemini 3.1 Flash", "group": "Agent + Search", "overlap": 0.444, "fabrication": 0.424, "calibration": 0.464, "reward_mean": 0.47},
+  {"name": "Gemini 3.1 Pro", "group": "Agent + Search", "overlap": 0.424, "fabrication": 0.584, "calibration": 0.504, "reward_mean": 0.53},
+  {"name": "Deepseek v4 Flash", "group": "Agent + Search", "overlap": 0.484, "fabrication": 0.634, "calibration": 0.594, "reward_mean": 0.60},
+  {"name": "Deepseek v4 Pro", "group": "Agent + Search", "overlap": 0.464, "fabrication": 0.584, "calibration": 0.474, "reward_mean": 0.53},
+  {"name": "AgentReview (Gemini 3.1 Pro)", "group": "Multi-Agent", "overlap": 0.484, "fabrication": 0.544, "calibration": 0.594, "reward_mean": 0.57},
+  {"name": "AI Scientist v2 (Gemini 3.1 Pro)", "group": "Multi-Agent", "overlap": 0.454, "fabrication": 0.494, "calibration": 0.504, "reward_mean": 0.51},
+  {"name": "AI Scientist v2 (DS v4 Flash)", "group": "Multi-Agent", "overlap": 0.464, "fabrication": 0.484, "calibration": 0.544, "reward_mean": 0.52},
+  {"name": "DeepReviewer-v2", "group": "Multi-Agent", "overlap": 0.513, "fabrication": 0.286, "calibration": 0.711, "reward_mean": 0.53},
+  {"name": "Stanford Reviewer", "group": "Stanford", "overlap": 0.559, "fabrication": 0.825, "calibration": 0.817, "reward_mean": 0.76},
+  {"name": "Our AI Reviewer (DeepSeek v4 flash, no search)", "group": "Ours", "overlap": 0.629, "fabrication": 0.845, "calibration": 0.854, "reward_mean": 0.80},
+  {"name": "Our AI Reviewer (DeepSeek v4 flash)", "group": "Ours", "overlap": 0.741, "fabrication": 0.869, "calibration": 0.875, "reward_mean": 0.85}
+ ],
+ "human_alignment": {
+  "source": "Appendix §A.2 (Human Alignment with Judge)",
+  "n_papers": 100,
+  "n_annotators": 4,
+  "spearman_rho": 0.84,
+  "raw_agreement_pct": 92,
+  "cohens_kappa": 0.81
+ },
+ "criteria_table": {
+  "source": "Appendix, Table (tab:criteria)",
+  "rows": [
+   {"criterion": "Comprehension", "input": "P + GR", "purpose": "Accurately identifies core contributions using textual evidence.", "in_reward": false},
+   {"criterion": "Substance", "input": "P + GR", "purpose": "Raises specific, non-trivial technical critiques.", "in_reward": false},
+   {"criterion": "Issue Overlap", "input": "HR + GR", "purpose": "If the generated review covers points human reviewers raised.", "in_reward": true},
+   {"criterion": "Fabrication", "input": "P + GR", "purpose": "Check whether the model review invents facts about the paper.", "in_reward": true},
+   {"criterion": "Calibration", "input": "P + HR + GR", "purpose": "Mean of decision alignment with human consensus and internal consistency between review critique and final score.", "in_reward": true}
+  ],
+  "legend": "P: Paper, HR: Human Review, GR: Generated Review."
+ }
+}
