@@ -1,8 +1,8 @@
 /* ============================================================
    AppliedScientist — layout
-   One centered column. Sections are separated by space and a
-   consistent header pattern (kicker → title → lede), never by
-   rules scattered through the text.
+   One centered column, warm ivory ground, quiet elevation.
+   Sections separate by whitespace; cards and plates give the
+   raised surfaces that read as deliberate rather than bare.
    ============================================================ */
 
 .page {
@@ -24,21 +24,21 @@
 }
 .skip-link:focus { left: 0.5rem; top: 0.5rem; }
 
-/* ---------- masthead: the one sticky line on the page ---------- */
+/* ---------- masthead ---------- */
 
 .masthead {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: color-mix(in srgb, var(--page) 90%, transparent);
-  backdrop-filter: saturate(1.1) blur(10px);
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: saturate(1.15) blur(12px);
   border-bottom: 1px solid var(--rule);
 }
 .masthead-inner {
   max-width: var(--page-max);
   margin: 0 auto;
   padding: 0 clamp(1.25rem, 5vw, 3rem);
-  height: 3.4rem;
+  height: 3.6rem;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -70,64 +70,97 @@
   font-family: var(--sans);
   font-size: var(--t-meta);
   font-weight: 600;
-  color: var(--page);
+  color: #fff;
   background: var(--ink);
   border: 1px solid var(--ink);
-  border-radius: 3px;
-  padding: 0.34rem 0.85rem;
+  border-radius: 999px;
+  padding: 0.42rem 1rem;
   white-space: nowrap;
-  transition: background var(--dur) var(--ease);
+  transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
-.masthead-cta:hover { background: var(--link); border-bottom-color: var(--ink); }
+.masthead-cta:hover { background: var(--link); border-color: var(--link); border-bottom-color: var(--link); }
 @media (max-width: 900px) { .masthead-nav { display: none; } }
 
 /* ---------- hero ---------- */
 
 .hero {
-  padding: clamp(3.5rem, 9vh, 6rem) 0 clamp(2.5rem, 6vh, 4rem);
+  position: relative;
+  padding: clamp(3.5rem, 9vh, 6rem) 0 clamp(2.6rem, 6vh, 4rem);
 }
+/* a soft academic wash behind the opening — quiet, not loud */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 26rem;
+  background:
+    radial-gradient(42rem 22rem at 12% -4%, var(--link-wash), transparent 62%),
+    radial-gradient(34rem 20rem at 92% 6%, #EFF3EE, transparent 60%);
+  pointer-events: none;
+}
+.hero > * { position: relative; }
+
 .hero-title {
   font-size: var(--t-hero);
-  line-height: 1.08;
-  letter-spacing: -0.014em;
-  max-width: 21ch;
+  line-height: 1.06;
+  letter-spacing: -0.018em;
+  max-width: 22ch;
 }
 .hero-authors {
   font-family: var(--sans);
   font-size: var(--t-small);
-  color: var(--ink-faint);
-  margin-top: 1.2rem;
+  color: var(--ink-soft);
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.5rem;
 }
+.hero-authors a { border-bottom: 0; }
+.hero-authors a:hover { color: var(--link); }
+.author-sep { color: var(--ink-ghost); }
 .hero-lead {
   font-size: var(--t-lead);
   line-height: 1.55;
-  max-width: 39rem;
-  margin-top: 1.8rem;
+  max-width: 40rem;
+  margin-top: 1.9rem;
   color: var(--ink);
 }
 .hero-links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.6rem 1.4rem;
-  margin-top: 2rem;
+  gap: 0.7rem 1.5rem;
+  margin-top: 2.1rem;
   font-family: var(--sans);
   font-size: var(--t-small);
 }
-.hero-links .soon {
-  color: var(--ink-ghost);
+.hero-links a {
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--rule-mid);
+  border-radius: 999px;
+  color: var(--ink);
+  transition: all var(--dur) var(--ease);
 }
+.hero-links a:hover {
+  background: var(--ink);
+  color: var(--page);
+  border-color: var(--ink);
+}
+.hero-links .soon { color: var(--ink-faint); }
 
-/* headline results: one strong rule above, like a table that
-   opens the paper — the single most deliberate rule on the page */
+/* headline numbers as a raised card */
 .hero-stats {
-  margin-top: 2.8rem;
-  padding-top: 1.6rem;
-  border-top: 1.5px solid var(--rule-strong);
+  margin-top: 2.9rem;
+  padding: 1.9rem 2.1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
-  max-width: 56rem;
+  gap: 2.2rem;
+  max-width: 58rem;
 }
 .stat-value {
   display: block;
@@ -142,7 +175,7 @@
   display: block;
   font-family: var(--sans);
   font-size: var(--t-meta);
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--ink-soft);
   margin-top: 0.5rem;
 }
@@ -151,10 +184,28 @@
   font-family: var(--mono);
   font-size: var(--t-micro);
   color: var(--ink-faint);
-  margin-top: 0.3rem;
+  margin-top: 0.35rem;
 }
 @media (max-width: 700px) {
-  .hero-stats { grid-template-columns: 1fr; gap: 1.4rem; }
+  .hero-stats { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem 1.4rem; }
+}
+
+/* abstract: the paper's opening, set as a bordered block */
+.abstract-block {
+  margin-top: 2.6rem;
+  max-width: 48rem;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--link);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem 1.8rem;
+}
+.abstract-block .label { display: block; margin-bottom: 0.7rem; }
+.abstract-block p {
+  font-size: var(--t-small);
+  color: var(--ink-soft);
+  margin: 0;
 }
 
 /* ---------- sections ---------- */
@@ -165,20 +216,33 @@
 }
 .section + .section { padding-top: clamp(2rem, 6vh, 3.5rem); }
 
-.sec-head { max-width: var(--measure); margin-bottom: 2.2rem; }
+.sec-head { max-width: var(--measure); margin-bottom: 2.3rem; }
 .sec-kicker {
   display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
+  align-items: center;
+  gap: 0.7rem;
   font-family: var(--sans);
   font-size: var(--t-micro);
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--link);
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
 }
-.sec-kicker .sec-no { color: var(--ink-ghost); }
+.sec-kicker .sec-no {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--link) 38%, transparent);
+  border-radius: 999px;
+  font-size: var(--t-micro);
+  letter-spacing: 0.04em;
+  color: var(--link);
+  background: var(--link-wash);
+}
 .sec-title { font-size: var(--t-h2); }
 .sec-lede {
   font-size: var(--t-lead);
@@ -187,11 +251,10 @@
   margin-top: 1rem;
 }
 
-/* prose inside a section never becomes a wall */
 .prose { max-width: var(--measure); }
 .prose p + p { margin-top: -0.1rem; }
 
-/* supporting facts under a headline figure, set as a quiet row */
+/* supporting facts under a headline figure */
 .fact-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -204,7 +267,7 @@
 .fact-value {
   display: block;
   font-family: var(--serif);
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   font-weight: 600;
   font-variant-numeric: lining-nums tabular-nums;
   line-height: 1.1;
@@ -215,83 +278,90 @@
   font-family: var(--sans);
   font-size: var(--t-meta);
   color: var(--ink-faint);
-  line-height: 1.4;
+  line-height: 1.45;
   margin-top: 0.3rem;
   max-width: 15rem;
 }
 
-/* ---------- three conditions: the experimental design ---------- */
+/* ---------- three conditions ---------- */
 
 .conditions {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2.5rem;
+  gap: 1.5rem;
   margin-top: 2.5rem;
   max-width: var(--fig-max);
+}
+.condition {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.4rem 1.5rem 1.5rem;
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.condition:hover {
+  border-color: color-mix(in srgb, var(--link) 45%, transparent);
+  transform: translateY(-2px);
 }
 .condition-name {
   font-family: var(--sans);
   font-size: var(--t-small);
   font-weight: 600;
-  color: var(--ink);
-  padding-bottom: 0.45rem;
-  border-bottom: 1px solid var(--rule-mid);
-  margin-bottom: 0.7rem;
+  color: var(--link);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0.8rem;
 }
 .condition p {
   font-size: var(--t-small);
   color: var(--ink-soft);
   line-height: 1.55;
 }
-.condition .condition-tag {
-  font-family: var(--mono);
-  font-size: var(--t-micro);
-  color: var(--ink-faint);
-  display: block;
-  margin-bottom: 0.7rem;
-}
-@media (max-width: 800px) { .conditions { grid-template-columns: 1fr; gap: 1.8rem; } }
+@media (max-width: 800px) { .conditions { grid-template-columns: 1fr; gap: 1.1rem; } }
 
 /* ---------- the finding, stated once, large ---------- */
 
 .finding {
   max-width: var(--measure);
   margin: 2.4rem 0;
-  padding-left: 1.2rem;
-  border-left: 2px solid var(--ink);
+  padding: 1.4rem 1.6rem;
+  border-left: 3px solid var(--ink);
+  background: linear-gradient(90deg, var(--surface-1), transparent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
   font-size: var(--t-lead);
   line-height: 1.5;
 }
 .finding em { font-style: italic; }
 
-/* ---------- inline disclosure: quiet, one marker, no rules ---------- */
+/* ---------- inline disclosure ---------- */
 
 .detail { margin-top: 2rem; max-width: var(--fig-max); }
 .detail > summary {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   cursor: pointer;
   list-style: none;
   font-family: var(--sans);
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 600;
   color: var(--link);
-  padding: 0.2rem 0;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--link) 30%, transparent);
+  border-radius: 999px;
+  background: var(--link-wash);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
 .detail > summary::-webkit-details-marker { display: none; }
-.detail > summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+.detail > summary:hover {
+  background: color-mix(in srgb, var(--link-wash) 70%, var(--link));
+  border-color: var(--link);
+}
 .detail > summary:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
 .detail-mark {
-  width: 1.3rem;
-  height: 1.3rem;
-  flex: none;
-  display: inline-grid;
-  place-items: center;
-  border: 1px solid color-mix(in srgb, var(--link) 45%, transparent);
-  border-radius: 50%;
   font-size: 0.95rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1;
   transition: transform var(--dur) var(--ease);
 }
@@ -299,13 +369,15 @@
 .detail-count {
   font-family: var(--mono);
   font-weight: 400;
-  font-size: var(--t-meta);
+  font-size: var(--t-micro);
   color: var(--ink-faint);
   white-space: nowrap;
 }
-.detail-body { padding: 1.2rem 0 0.5rem; }
+.detail-body {
+  padding: 1.5rem 0.4rem 0.5rem;
+}
 
-/* subheadings inside a section or detail: real headings, not whispers */
+/* subheadings inside a section or detail */
 .detail-kicker,
 .subhead {
   font-family: var(--sans);
@@ -323,77 +395,84 @@
   line-height: 1.55;
   color: var(--ink-soft);
   max-width: var(--measure);
-  margin-top: 0.8rem;
+  margin-top: 0.9rem;
 }
 
-/* ---------- run records ---------- */
-
-.runs {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 3rem;
-  max-width: var(--fig-max);
-}
-@media (max-width: 860px) { .runs { grid-template-columns: 1fr; } }
-.run-head { margin-bottom: 0.9rem; }
-.run-title { font-size: var(--t-h3); font-weight: 600; }
-.run-meta {
-  font-family: var(--mono);
-  font-size: var(--t-micro);
-  color: var(--ink-faint);
-  display: block;
-  margin-top: 0.4rem;
-}
-.run-spark { max-width: 230px; margin: 0.9rem 0; }
-.run p { font-size: var(--t-small); color: var(--ink-soft); }
-
-/* quoted review text: the one element that keeps a side bar,
-   because a quotation needs a visible edge */
+/* quoted review text: a card with a colored edge */
 blockquote.review {
-  margin: 1.1rem 0;
-  padding: 0.1rem 0 0.1rem 1rem;
-  border-left: 2px solid var(--rule-mid);
+  margin: 1.2rem 0;
+  padding: 1rem 1.2rem;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--rule-mid);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   font-size: var(--t-small);
   color: var(--ink-soft);
 }
 blockquote.review p { margin-bottom: 0.6em; }
+blockquote.review p:last-child { margin-bottom: 0; }
 blockquote.review cite {
   display: block;
   font-family: var(--sans);
   font-style: normal;
   font-size: var(--t-meta);
   color: var(--ink-faint);
-  margin-top: 0.5rem;
+  margin-top: 0.55rem;
 }
-.run-links {
+
+/* ---------- example review section ---------- */
+
+.example-review { max-width: var(--fig-max); }
+.example-review .review-note {
+  font-family: var(--sans);
+  font-size: var(--t-small);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+  margin: 1.4rem 0 1.2rem;
+}
+.review-source {
+  margin-top: 1.6rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 1.1rem;
-  margin-top: 1rem;
+  gap: 0.5rem 1.4rem;
   font-family: var(--sans);
   font-size: var(--t-meta);
 }
+.review-source .label { display: block; margin-bottom: 0.25rem; }
 
-/* ---------- footer: citation and provenance ---------- */
+/* ---------- footer ---------- */
 
 .colophon {
-  margin-top: 3rem;
-  border-top: 1.5px solid var(--rule-strong);
-  padding: 2.6rem 0 3.5rem;
+  margin-top: 3.5rem;
+  background: var(--ink);
+  color: color-mix(in srgb, var(--page) 82%, transparent);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 3rem 0 3.6rem;
 }
+.colophon a { color: #DCE8F4; border-bottom-color: color-mix(in srgb, #DCE8F4 35%, transparent); }
+.colophon a:hover { border-bottom-color: #DCE8F4; }
 .colophon-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   gap: 3rem;
 }
 @media (max-width: 800px) { .colophon-grid { grid-template-columns: 1fr; } }
-.colophon h2 { font-size: var(--t-h3); font-family: var(--sans); font-weight: 600; }
+.colophon h2 {
+  font-size: var(--t-h3);
+  font-family: var(--sans);
+  font-weight: 600;
+  color: var(--page);
+}
 pre.bibtex {
   font-family: var(--mono);
   font-size: 0.75rem;
   line-height: 1.6;
-  color: var(--ink-soft);
-  background: var(--surface-1);
+  color: color-mix(in srgb, var(--page) 78%, transparent);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
   padding: 1rem 1.1rem;
   overflow-x: auto;
   margin: 1rem 0 1.2rem;
@@ -402,13 +481,14 @@ pre.bibtex {
   font-family: var(--sans);
   font-size: var(--t-meta);
   line-height: 1.6;
-  color: var(--ink-faint);
+  color: color-mix(in srgb, var(--page) 66%, transparent);
   max-width: 34rem;
 }
-.colophon-facts { display: flex; flex-direction: column; gap: 1.1rem; }
-.colophon-fact .label { display: block; margin-bottom: 0.25rem; }
+.colophon-facts { display: flex; flex-direction: column; gap: 1.2rem; }
+.colophon-fact .label { display: block; margin-bottom: 0.25rem; color: color-mix(in srgb, var(--page) 55%, transparent); }
 .colophon-fact p {
   font-family: var(--sans);
   font-size: var(--t-meta);
-  color: var(--ink-soft);
+  color: color-mix(in srgb, var(--page) 78%, transparent);
+  margin: 0;
 }

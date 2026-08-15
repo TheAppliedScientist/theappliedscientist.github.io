@@ -12,6 +12,20 @@ figure.fig {
 }
 figcaption.caption { margin-top: 0; }
 
+/* every chart sits on a raised plate — a deliberate figure surface,
+   not a bare svg floating in the page */
+figure.fig .figure-interactive {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.3rem 1.3rem 1.1rem;
+}
+figure.fig .fig-key,
+figure.fig .fig-legend,
+figure.fig .fig-readout,
+figure.fig .compare-switch { margin-top: 0; }
+
 .figure-interactive { display: block; }
 .figure-interactive svg { display: block; overflow: visible; }
 

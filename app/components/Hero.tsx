@@ -2,8 +2,8 @@ import { site } from "../site.config";
 import stats from "../data/key_stats.json";
 
 /**
- * Hero — how the paper opens: venue, title, the question the work turns
- * on, and the three numbers that are the result. Nothing decorative.
+ * Hero — how the paper opens: title, authors, the abstract's own words as
+ * the lead, and the three numbers that are the result.
  */
 export default function Hero() {
   return (
@@ -24,15 +24,15 @@ export default function Hero() {
 
       <p className="hero-lead">
         A review is only useful if acting on it leads to a measurable
-        improvement in the paper. We tested that directly: an AI scientist
-        revised {stats.papers} rejected and borderline ICLR papers &mdash;
-        code, experiments, and manuscript &mdash; guided at each round by a
-        fresh review from an AI reviewer we benchmarked first.
+        improvement in the paper. We present AppliedScientist, a closed-loop
+        system that couples an autonomous AI scientist with an AI reviewer,
+        and evaluate it by iteratively revising rejected papers from a range
+        of research subfields.
       </p>
 
       <div className="hero-links">
         <a href={site.links.paper}>Paper (PDF)</a>
-        <a href="/exhibits/idea09_full_annotated.pdf">Annotated revision</a>
+        <a href="/exhibits/idea09_full_annotated.pdf">Annotated manuscript</a>
         <span className="soon">Code &amp; data released on publication</span>
       </div>
 
@@ -48,14 +48,36 @@ export default function Hero() {
         </div>
         <div className="stat">
           <span className="stat-value">{stats.exec_rate}%</span>
-          <span className="stat-label">execution weaknesses resolved</span>
+          <span className="stat-label">execution-related weaknesses resolved</span>
           <span className="stat-sub">{stats.exec_resolved}</span>
         </div>
         <div className="stat" data-flag="true">
           <span className="stat-value">{stats.idea_rate}%</span>
-          <span className="stat-label">idea weaknesses resolved</span>
+          <span className="stat-label">idea-related weaknesses resolved</span>
           <span className="stat-sub">{stats.idea_resolved}</span>
         </div>
+      </div>
+
+      <div className="abstract-block">
+        <span className="label">Abstract</span>
+        <p>
+          Automated reviewing systems are increasingly evaluated based on the
+          quality of the reviews they produce. Yet a review is only useful if
+          acting on it leads to a measurable improvement in the paper. We
+          compare three revision settings: one initialized with the original
+          venue reviews, one initialized with AI-generated reviews, and
+          autonomous self-revision using the same fixed prompt in every
+          round. Because the reviewer both guides and evaluates the revision,
+          we also assess the human-initialized revisions using Stanford
+          Reviewer as an independent evaluator. Reviewer-guided revision
+          consistently improves more than fixed-prompt self-revision, and
+          Stanford Reviewer also assigns higher scores to later revisions.
+          AppliedScientist resolves 128 of 150 execution-related weaknesses
+          (85.3%), but only 2 of 18 idea-related weaknesses (11.1%),
+          suggesting that iterative revision is effective at improving
+          experiments and implementation, but rarely changes concerns about
+          novelty or significance.
+        </p>
       </div>
     </div>
   );

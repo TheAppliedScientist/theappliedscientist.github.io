@@ -42,7 +42,7 @@ body {
 
 /* ---------- prose ---------- */
 
-p { margin: 0 0 0.85em; }
+p { margin: 0 0 0.9em; }
 p:last-child { margin-bottom: 0; }
 
 em { font-style: italic; }
@@ -57,14 +57,14 @@ strong { font-weight: 600; }
 a {
   color: var(--link);
   text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--link) 30%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--link) 28%, transparent);
   transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 a:hover { border-bottom-color: var(--link); }
 a:focus-visible {
   outline: 2px solid var(--link);
   outline-offset: 2px;
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 /* ---------- headings: serif, like the paper ---------- */
@@ -73,17 +73,17 @@ h1, h2, h3, h4 {
   font-family: var(--serif);
   font-weight: 600;
   line-height: var(--lh-tight);
-  letter-spacing: -0.008em;
+  letter-spacing: -0.012em;
   margin: 0;
   text-wrap: balance;
 }
 
-/* small-caps label, used for kickers, figure numbers, table labels */
+/* small-caps label */
 .label {
   font-family: var(--sans);
   font-size: var(--t-micro);
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
@@ -93,7 +93,7 @@ h1, h2, h3, h4 {
 .caption {
   font-family: var(--sans);
   font-size: var(--t-meta);
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--ink-soft);
   max-width: 46rem;
 }
