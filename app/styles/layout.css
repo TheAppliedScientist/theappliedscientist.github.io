@@ -396,15 +396,12 @@
   margin-top: 0.9rem;
 }
 
-/* quoted review text: a card with a colored edge */
+/* quoted review text: a paper blockquote — a left rule and nothing else.
+   The edge marks a quotation; it is not an accent decoration. */
 blockquote.review {
-  margin: 1.2rem 0;
-  padding: 1rem 1.2rem;
-  background: var(--surface-2);
-  border: 1px solid var(--rule);
+  margin: 1.4rem 0;
+  padding: 0.1rem 0 0.1rem 1.1rem;
   border-left: 2px solid var(--rule-mid);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
   font-size: var(--t-small);
   color: var(--ink-soft);
 }
