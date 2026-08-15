@@ -190,13 +190,12 @@
   .hero-stats { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem 1.4rem; }
 }
 
-/* abstract: the paper's opening, set as a bordered block */
+/* abstract: the paper's opening, set as a quiet block */
 .abstract-block {
   margin-top: 2.6rem;
   max-width: 48rem;
   background: var(--surface-2);
   border: 1px solid var(--rule);
-  border-left: 3px solid var(--link);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   padding: 1.5rem 1.8rem;
@@ -320,15 +319,14 @@
 }
 @media (max-width: 800px) { .conditions { grid-template-columns: 1fr; gap: 1.1rem; } }
 
-/* ---------- the finding, stated once, large ---------- */
+/* ---------- the finding, stated once, as an epigraph ---------- */
 
 .finding {
   max-width: var(--measure);
   margin: 2.4rem 0;
-  padding: 1.4rem 1.6rem;
-  border-left: 3px solid var(--ink);
-  background: linear-gradient(90deg, var(--surface-1), transparent);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1.2rem 0 1.1rem;
+  border-top: 1.5px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-mid);
   font-size: var(--t-lead);
   line-height: 1.5;
 }
@@ -404,7 +402,7 @@ blockquote.review {
   padding: 1rem 1.2rem;
   background: var(--surface-2);
   border: 1px solid var(--rule);
-  border-left: 3px solid var(--rule-mid);
+  border-left: 2px solid var(--rule-mid);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   font-size: var(--t-small);
