@@ -7,9 +7,9 @@ export default function ExampleReview() {
   return (
     <div className="example-review">
       <p className="review-note">
-        The following content is an example review produced by our AI
-        Reviewer and AppliedScientist for the paper below. Each critique is
-        linked to the passage it refers to in the annotated manuscript.
+        The following content is an example review and annotated manuscript
+        produced by our AI Reviewer and AppliedScientist for the paper
+        mentioned below. Each critique is linked to the passage it refers to.
       </p>
 
       <p className="detail-kicker">

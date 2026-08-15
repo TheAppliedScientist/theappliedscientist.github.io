@@ -23,11 +23,9 @@ export default function Hero() {
       </p>
 
       <p className="hero-lead">
-        A review is only useful if acting on it leads to a measurable
-        improvement in the paper. We present AppliedScientist, a closed-loop
-        system that couples an autonomous AI scientist with an AI reviewer,
-        and evaluate it by iteratively revising rejected papers from a range
-        of research subfields.
+        As language models become increasingly capable of conducting research
+        and reviewing scientific papers, a natural question emerges: Can this
+        process of scientific review and revision itself be automated?
       </p>
 
       <div className="hero-links">
@@ -64,19 +62,26 @@ export default function Hero() {
           Automated reviewing systems are increasingly evaluated based on the
           quality of the reviews they produce. Yet a review is only useful if
           acting on it leads to a measurable improvement in the paper. We
-          compare three revision settings: one initialized with the original
-          venue reviews, one initialized with AI-generated reviews, and
-          autonomous self-revision using the same fixed prompt in every
-          round. Because the reviewer both guides and evaluates the revision,
-          we also assess the human-initialized revisions using Stanford
-          Reviewer as an independent evaluator. Reviewer-guided revision
-          consistently improves more than fixed-prompt self-revision, and
-          Stanford Reviewer also assigns higher scores to later revisions.
-          AppliedScientist resolves 128 of 150 execution-related weaknesses
-          (85.3%), but only 2 of 18 idea-related weaknesses (11.1%),
-          suggesting that iterative revision is effective at improving
-          experiments and implementation, but rarely changes concerns about
-          novelty or significance.
+          present AppliedScientist, a closed-loop system that couples an
+          autonomous AI scientist with an AI reviewer, and evaluate it by
+          iteratively revising rejected papers from a range of research
+          subfields. To mirror how human authors build on earlier drafts, the
+          AI scientist has access to its previous versions during revision.
+          To avoid bias from prior judgments, however, each review is
+          generated independently, with the reviewer having no memory of
+          earlier feedback or scores. We compare three revision settings: one
+          initialized with the original venue reviews, one initialized with
+          AI-generated reviews, and autonomous self-revision using the same
+          fixed prompt in every round. Because the reviewer both guides and
+          evaluates the revision, we also assess the human-initialized
+          revisions using Stanford Reviewer as an independent evaluator.
+          Reviewer-guided revision consistently improves more than
+          fixed-prompt self-revision, and Stanford Reviewer also assigns
+          higher scores to later revisions. AppliedScientist resolves 128 of
+          150 execution-related weaknesses (85.3%), but only 2 of 18
+          idea-related weaknesses (11.1%), suggesting that iterative revision
+          is effective at improving experiments and implementation, but
+          rarely changes concerns about novelty or significance.
         </p>
       </div>
     </div>

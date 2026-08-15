@@ -98,8 +98,7 @@ export default function Home() {
           <div className="condition">
             <p className="condition-name">AI-initialized</p>
             <p>
-              The AI Reviewer also supplies the first-round feedback, in place
-              of the venue reviews.
+              The AI Reviewer also supplies the first-round feedback.
             </p>
           </div>
           <div className="condition">
@@ -160,9 +159,9 @@ export default function Home() {
           </p>
         </div>
 
-        <Detail summary="Benchmarks against baselines, and the ablations behind them" count="Tables 1–2">
+        <Detail summary="Comparison with existing automated reviewers" count="Tables 1–2">
           <p className="detail-kicker">
-            Pairwise preference evaluation on 650 ICLR papers
+            Pairwise preference evaluation against existing automated reviewers
           </p>
           <BaselineTable />
           <p className="detail-note">
@@ -172,7 +171,7 @@ export default function Home() {
           </p>
 
           <p className="detail-kicker">
-            AgenticJudge for review evaluation
+            AgenticJudge for Review Evaluation
           </p>
           <AgenticJudgeTable />
           <p className="detail-note">
@@ -183,7 +182,7 @@ export default function Home() {
             because they saturate across frontier models.
           </p>
 
-          <p className="detail-kicker">Human alignment with the judge</p>
+          <p className="detail-kicker">Human Alignment with Judge</p>
           <p className="detail-note">
             We randomly sample a set of 100 papers from the eval set, and four
             human experts are asked to annotate across our three main
@@ -193,7 +192,7 @@ export default function Home() {
             0.81.
           </p>
 
-          <p className="detail-kicker">Structured vs. autonomous review</p>
+          <p className="detail-kicker">Autonomous vs Structured Reviewer</p>
           <p className="detail-note">
             We compare our structured AI Reviewer with an autonomous variant
             that has access to the same tools but is free to decide its own
@@ -204,7 +203,7 @@ export default function Home() {
             outperforms the autonomous variant.
           </p>
 
-          <p className="detail-kicker">Input representation: LaTeX vs. PDF</p>
+          <p className="detail-kicker">Input Representation: LaTeX vs PDF</p>
           <p className="detail-note">
             To ensure the reviewing agent accurately interprets tables and
             mathematical notation, our reviewer performs OCR on the PDF rather
@@ -317,25 +316,25 @@ export default function Home() {
           </p>
         </div>
 
-        <Detail summary="Score thresholds, per-domain results, and cost" count="Figs. 3–7">
+        <Detail summary="Score thresholds, per-domain results, and computation cost" count="Figs. 3–7">
           <div className="slope-pair">
             <Figure n="Figure 4a" caption="Number of papers scoring at or above each threshold, before revision (V0) and at each paper's best revision (Vmax), out of 30 papers — our reviewer.">
               <ThresholdSlope rows={thresholds.ours} n={thresholds.n} />
             </Figure>
-            <Figure n="Figure 4b" caption="The same thresholds under Stanford Reviewer, out of 30 papers.">
+            <Figure n="Figure 4b" caption="Number of papers scoring at or above each threshold, before revision (V0) and at each paper's best revision (Vmax), out of 30 papers — Stanford Reviewer.">
               <ThresholdSlope rows={thresholds.stanford} n={thresholds.n}
                 color="var(--s-stanford)" />
             </Figure>
           </div>
 
-          <p className="detail-kicker">Per-domain results</p>
+          <p className="detail-kicker">Per-Domain Results</p>
           <DomainGrid />
           <p className="detail-note">
             The upward pattern appears in every represented domain rather than
             being confined to one research area.
           </p>
 
-          <p className="detail-kicker">Computation cost</p>
+          <p className="detail-kicker">Computation Cost</p>
           <p className="detail-note">
             Each revision run for a paper takes approximately 9 hours on a
             single RTX Pro 6000 (96 GB GPU) and includes five rounds of
@@ -413,8 +412,8 @@ export default function Home() {
           rather than continuing the revision loop.
         </p>
 
-        <Detail summary="Verifying the novelty objections" count="1 check">
-          <p className="detail-kicker">Are the objections grounded?</p>
+        <Detail summary="Verifying Novelty Objections" count="1 check">
+          <p className="detail-kicker">Prior work cited by the novelty objections</p>
           <p className="detail-note">
             The low idea-resolution rate raises the possibility that some
             novelty-related objections arise from unsupported or hallucinated
@@ -462,7 +461,7 @@ export default function Home() {
         </Figure>
 
         <h3 className="subhead" style={{ marginTop: "3rem" }}>
-          Example review and annotated manuscript
+          Example Review and Annotated Manuscript
         </h3>
         <ExampleReview />
       </Section>
