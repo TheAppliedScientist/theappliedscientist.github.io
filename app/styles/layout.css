@@ -3028,12 +3028,22 @@ pre.bibtex {
   aspect-ratio: 1100 / 1424;
   overflow: hidden;
   background: #f7f5ef;
-  cursor: zoom-in;
   box-shadow: 0 1.2rem 2.6rem rgba(0, 0, 0, 0.25);
   z-index: 1;
   transform: translateY(var(--paper-offset)) rotate(var(--paper-angle));
   transform-origin: 50% 100%;
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.artifact-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(20, 19, 16, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
 }
 
 .artifact-page img {
@@ -3041,6 +3051,7 @@ pre.bibtex {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: filter 180ms ease, transform 260ms ease;
 }
 
 .artifact-page-note {
@@ -3053,23 +3064,72 @@ pre.bibtex {
   font-family: var(--mono);
   font-size: 0.68rem;
   letter-spacing: 0.02em;
+  z-index: 3;
 }
 
-.artifact-manuscript:hover .artifact-page {
-  z-index: 2;
-  transform: translateY(-0.25rem) rotate(0deg) scale(1.015);
-  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.34);
+.artifact-enlarge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.58rem;
+  width: max-content;
+  padding: 0.72rem 0.92rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 0.35rem 1rem 0.35rem 0.35rem;
+  background: rgba(31, 29, 25, 0.94);
+  color: #f7f1e8;
+  box-shadow: 0 0.9rem 2.2rem rgba(0, 0, 0, 0.34);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -42%) scale(0.96);
+  transition: opacity 160ms ease, transform 210ms ease, background-color 160ms ease;
 }
 
-.artifact-manuscript:focus-visible .artifact-page {
-  z-index: 2;
-  transform: translateY(-0.25rem) rotate(0deg) scale(1.015);
-  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.34);
+.artifact-enlarge-icon {
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  background: #ee7866;
+  color: #171613;
+  font-size: 1rem;
+  line-height: 1;
 }
 
-.artifact-manuscript:focus-visible {
+.artifact-page:hover::after,
+.artifact-page:focus-within::after {
+  opacity: 1;
+}
+
+.artifact-page:hover > img,
+.artifact-page:focus-within > img {
+  filter: brightness(0.72) contrast(0.94);
+  transform: scale(1.018);
+}
+
+.artifact-page:hover .artifact-enlarge,
+.artifact-enlarge:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.artifact-enlarge:hover {
+  background: #f3ede3;
+  color: #272521;
+}
+
+.artifact-enlarge:focus-visible {
   outline: 3px solid #ee7866;
-  outline-offset: 0.55rem;
+  outline-offset: 3px;
 }
 
 .artifact-caption {
@@ -3107,6 +3167,7 @@ pre.bibtex {
 }
 
 .artifact-action {
+  display: inline-block;
   width: max-content;
   margin-top: 0.12rem;
   padding: 0.58rem 0.82rem;
@@ -3116,6 +3177,14 @@ pre.bibtex {
   font-family: var(--sans);
   font-size: 0.84rem;
   font-weight: 700;
+  border: 0;
+  text-decoration: none;
+}
+
+.artifact-action:hover {
+  color: #272521;
+  background: #fffaf1;
+  border: 0;
 }
 
 .artifact-lightbox {
@@ -3123,49 +3192,12 @@ pre.bibtex {
   inset: 0;
   z-index: 200;
   overflow: hidden;
-  background: rgba(5, 5, 4, 0.93);
+  background: rgba(14, 13, 11, 0.88);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  backdrop-filter: blur(10px) saturate(0.62);
+  backdrop-filter: blur(10px) saturate(0.7);
   transition: opacity 220ms ease, visibility 220ms ease;
-}
-
-.artifact-lightbox::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    radial-gradient(
-      ellipse 48% 70% at 50% 38%,
-      rgba(255, 213, 116, 0.13) 0%,
-      rgba(255, 226, 153, 0.065) 48%,
-      rgba(255, 235, 188, 0) 78%
-    );
-  opacity: 0;
-  transition: opacity 420ms ease 80ms;
-}
-
-.artifact-lightbox::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -8vh;
-  z-index: 1;
-  width: min(78vw, 72rem);
-  height: 28vh;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 208, 100, 0.16) 0%,
-    rgba(255, 224, 147, 0.06) 45%,
-    rgba(255, 233, 177, 0) 76%
-  );
-  filter: blur(1rem);
-  opacity: 0;
-  transition: opacity 420ms ease 120ms;
 }
 
 .artifact-lightbox.is-visible {
@@ -3174,47 +3206,6 @@ pre.bibtex {
   pointer-events: auto;
 }
 
-.artifact-lightbox.is-visible::before,
-.artifact-lightbox.is-visible::after {
-  opacity: 1;
-}
-
-.artifact-lightbox-beam {
-  position: absolute;
-  top: 3.9rem;
-  left: 50%;
-  z-index: 2;
-  width: min(62vw, 58rem);
-  height: calc(100vh - 3.9rem);
-  transform: translateX(-50%);
-  clip-path: polygon(48.7% 0, 51.3% 0, 88% 100%, 12% 100%);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 224, 134, 0.58) 0%,
-    rgba(255, 233, 170, 0.3) 46%,
-    rgba(255, 241, 204, 0.075) 100%
-  );
-  filter: blur(0.85rem);
-  mix-blend-mode: screen;
-  opacity: 0;
-  transition: opacity 380ms ease 40ms;
-}
-
-.artifact-lightbox.is-visible .artifact-lightbox-beam {
-  opacity: 1;
-}
-
-.artifact-lightbox-lamp {
-  position: absolute;
-  top: -3.05rem;
-  left: 50%;
-  z-index: 6;
-  display: block;
-  width: 16rem;
-  height: auto;
-  transform: translateX(-50%);
-  filter: drop-shadow(0 1rem 1.5rem rgba(255, 219, 119, 0.32));
-}
 
 .artifact-lightbox-close {
   position: absolute;
@@ -3253,7 +3244,7 @@ pre.bibtex {
 
 .artifact-lightbox-stage {
   position: absolute;
-  inset: 6.3rem 2rem 1.25rem;
+  inset: 2rem 2rem 1.25rem;
   z-index: 3;
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
@@ -3276,13 +3267,12 @@ pre.bibtex {
   width: auto;
   height: 100%;
   max-width: min(76vw, 58rem);
-  max-height: calc(100vh - 10.7rem);
+  max-height: calc(100vh - 6.6rem);
   border: 0;
-  overflow: hidden;
-  background: #c9c5bd;
+  background: #fff;
   box-shadow:
-    0 2.2rem 5rem rgba(0, 0, 0, 0.68),
-    0 0 4.5rem rgba(255, 213, 115, 0.16);
+    0 2.2rem 5rem rgba(0, 0, 0, 0.62),
+    0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
 .artifact-lightbox-document img {
@@ -3291,45 +3281,6 @@ pre.bibtex {
   height: 100%;
   object-fit: contain;
   background: #fff;
-}
-
-.artifact-lightbox-page-base {
-  filter: brightness(0.38) contrast(0.88) saturate(0.58);
-}
-
-.artifact-lightbox-page-lit {
-  position: absolute;
-  inset: 0;
-  filter: brightness(1.04) contrast(1.02) saturate(0.94) sepia(0.035);
-  -webkit-mask-image: radial-gradient(
-    ellipse 89% 78% at 50% 34%,
-    #000 0%,
-    rgba(0, 0, 0, 0.98) 50%,
-    rgba(0, 0, 0, 0.68) 72%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 89% 78% at 50% 34%,
-    #000 0%,
-    rgba(0, 0, 0, 0.98) 50%,
-    rgba(0, 0, 0, 0.68) 72%,
-    transparent 100%
-  );
-}
-
-.artifact-lightbox-document::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      ellipse 92% 78% at 50% 15%,
-      rgba(255, 206, 75, 0.22) 0%,
-      rgba(255, 230, 151, 0.1) 54%,
-      rgba(255, 245, 218, 0) 100%
-    );
-  mix-blend-mode: soft-light;
 }
 
 .artifact-lightbox-stage figcaption {
@@ -3422,21 +3373,30 @@ pre.bibtex {
 @media (prefers-reduced-motion: reduce) {
   .artifact-page,
   .artifact-lightbox,
-  .artifact-lightbox-beam,
-  .artifact-lightbox-stage {
+  .artifact-lightbox-stage,
+  .artifact-page img,
+  .artifact-page::after,
+  .artifact-enlarge {
     transition: none;
   }
 }
 
 @media (hover: none) {
-  .artifact-lightbox {
-    display: none;
+  .artifact-page::after {
+    opacity: 0.18;
   }
 
-  .artifact-manuscript:hover .artifact-page,
-  .artifact-manuscript:focus-visible .artifact-page {
-    z-index: 1;
-    transform: none;
-    box-shadow: 0 1.2rem 2.6rem rgba(0, 0, 0, 0.25);
+  .artifact-enlarge {
+    padding: 0.55rem 0.68rem;
+    font-size: 0.76rem;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .artifact-enlarge-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: 0.85rem;
   }
 }

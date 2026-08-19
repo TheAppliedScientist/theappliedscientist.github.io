@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { site } from "../site.config";
 
 export default function AnnotatedPapersChapter() {
   const [previewIndex, setPreviewIndex] = useState(0);
   const [previewOpen, setPreviewOpen] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const triggerRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const previewPaper = site.annotatedPapers[previewIndex];
 
   const showPreview = (index: number) => {
@@ -13,16 +15,33 @@ export default function AnnotatedPapersChapter() {
     setPreviewOpen(true);
   };
 
+  const closePreview = useCallback(() => {
+    setPreviewOpen(false);
+    window.requestAnimationFrame(() => {
+      triggerRefs.current[previewIndex]?.focus();
+    });
+  }, [previewIndex]);
+
   useEffect(() => {
     if (!previewOpen) return;
 
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusTimer = window.setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 240);
+
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setPreviewOpen(false);
+      if (event.key === "Escape") closePreview();
     };
 
     window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [previewOpen]);
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      window.clearTimeout(focusTimer);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [closePreview, previewOpen]);
 
   return (
     <section className="research-chapter artifacts-chapter" id="artifacts">
@@ -46,17 +65,8 @@ export default function AnnotatedPapersChapter() {
         <ol className="artifact-manuscripts">
           {site.annotatedPapers.map((paper, index) => (
             <li key={paper.href} className={index === 0 ? "is-headline" : undefined}>
-              <a
-                className="artifact-manuscript"
-                href={paper.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Open annotated paper: ${paper.title}`}
-              >
-                <span
-                  className="artifact-page"
-                  onMouseEnter={() => showPreview(index)}
-                >
+              <div className="artifact-manuscript">
+                <span className="artifact-page">
                   <img
                     src={paper.preview}
                     alt={`${paper.previewPage} from ${paper.title}`}
@@ -65,6 +75,18 @@ export default function AnnotatedPapersChapter() {
                     loading="lazy"
                   />
                   <span className="artifact-page-note">{paper.previewPage}</span>
+                  <button
+                    ref={(element) => {
+                      triggerRefs.current[index] = element;
+                    }}
+                    className="artifact-enlarge"
+                    type="button"
+                    onClick={() => showPreview(index)}
+                    aria-label={`Enlarge ${paper.previewPage} from ${paper.title}`}
+                  >
+                    <span className="artifact-enlarge-icon" aria-hidden="true">⤢</span>
+                    Enlarge page
+                  </button>
                 </span>
 
                 <span className="artifact-caption">
@@ -75,11 +97,16 @@ export default function AnnotatedPapersChapter() {
                     <span className="artifact-role">{paper.role}</span>
                   </span>
                   <span className="artifact-title">{paper.title}</span>
-                  <span className="artifact-action">
+                  <a
+                    className="artifact-action"
+                    href={paper.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Open full annotated PDF <span aria-hidden="true">↗</span>
-                  </span>
+                  </a>
                 </span>
-              </a>
+              </div>
             </li>
           ))}
         </ol>
@@ -90,25 +117,18 @@ export default function AnnotatedPapersChapter() {
           aria-modal="true"
           aria-label={`Annotated paper preview: ${previewPaper.title}`}
           aria-hidden={!previewOpen}
-          onClick={() => setPreviewOpen(false)}
+          onClick={closePreview}
         >
           <button
+            ref={closeButtonRef}
             className="artifact-lightbox-close"
             type="button"
             tabIndex={previewOpen ? 0 : -1}
-            onClick={() => setPreviewOpen(false)}
+            onClick={closePreview}
           >
             <span aria-hidden="true">×</span>
             Close preview
           </button>
-          <img
-            className="artifact-lightbox-lamp"
-            src="/img/research-lightbox-pendant.webp"
-            alt=""
-            width="900"
-            height="600"
-          />
-          <span className="artifact-lightbox-beam" />
           <figure
             className="artifact-lightbox-stage"
             onClick={(event) => event.stopPropagation()}
@@ -119,27 +139,24 @@ export default function AnnotatedPapersChapter() {
               target="_blank"
               rel="noreferrer"
               aria-label={`Open full annotated PDF: ${previewPaper.title}`}
+              tabIndex={previewOpen ? 0 : -1}
             >
               <img
-                className="artifact-lightbox-page-base"
                 src={previewPaper.detail}
                 alt=""
                 width="2000"
                 height="2589"
-              />
-              <img
-                className="artifact-lightbox-page-lit"
-                src={previewPaper.detail}
-                alt=""
-                width="2000"
-                height="2589"
-                aria-hidden="true"
               />
             </a>
             <figcaption>
               <span>{previewPaper.role}</span>
               {previewPaper.title}
-              <a href={previewPaper.href} target="_blank" rel="noreferrer">
+              <a
+                href={previewPaper.href}
+                target="_blank"
+                rel="noreferrer"
+                tabIndex={previewOpen ? 0 : -1}
+              >
                 Open full PDF <span aria-hidden="true">↗</span>
               </a>
             </figcaption>
