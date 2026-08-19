@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { site } from "../site.config";
 
 export default function AnnotatedPapersChapter() {
@@ -12,6 +12,17 @@ export default function AnnotatedPapersChapter() {
     setPreviewIndex(index);
     setPreviewOpen(true);
   };
+
+  useEffect(() => {
+    if (!previewOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setPreviewOpen(false);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [previewOpen]);
 
   return (
     <section className="research-chapter artifacts-chapter" id="artifacts">
@@ -41,15 +52,11 @@ export default function AnnotatedPapersChapter() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open annotated paper: ${paper.title}`}
-                onMouseEnter={() => showPreview(index)}
-                onMouseLeave={() => setPreviewOpen(false)}
-                onFocus={() => showPreview(index)}
-                onBlur={() => setPreviewOpen(false)}
-                onKeyDown={(event) => {
-                  if (event.key === "Escape") setPreviewOpen(false);
-                }}
               >
-                <span className="artifact-page">
+                <span
+                  className="artifact-page"
+                  onMouseEnter={() => showPreview(index)}
+                >
                   <img
                     src={paper.preview}
                     alt={`${paper.previewPage} from ${paper.title}`}
@@ -79,20 +86,47 @@ export default function AnnotatedPapersChapter() {
 
         <div
           className={`artifact-lightbox${previewOpen ? " is-visible" : ""}`}
-          aria-hidden="true"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Annotated paper preview: ${previewPaper.title}`}
+          aria-hidden={!previewOpen}
+          onClick={() => setPreviewOpen(false)}
         >
+          <button
+            className="artifact-lightbox-close"
+            type="button"
+            tabIndex={previewOpen ? 0 : -1}
+            onClick={() => setPreviewOpen(false)}
+          >
+            <span aria-hidden="true">×</span>
+            Close preview
+          </button>
           <span className="artifact-lightbox-lamp" />
           <span className="artifact-lightbox-beam" />
-          <figure className="artifact-lightbox-stage">
-            <img
-              src={previewPaper.detail}
-              alt=""
-              width="2000"
-              height="2589"
-            />
+          <figure
+            className="artifact-lightbox-stage"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <a
+              className="artifact-lightbox-document"
+              href={previewPaper.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open full annotated PDF: ${previewPaper.title}`}
+            >
+              <img
+                src={previewPaper.detail}
+                alt=""
+                width="2000"
+                height="2589"
+              />
+            </a>
             <figcaption>
               <span>{previewPaper.role}</span>
               {previewPaper.title}
+              <a href={previewPaper.href} target="_blank" rel="noreferrer">
+                Open full PDF <span aria-hidden="true">↗</span>
+              </a>
             </figcaption>
           </figure>
         </div>
