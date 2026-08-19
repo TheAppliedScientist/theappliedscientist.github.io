@@ -3000,6 +3000,18 @@ pre.bibtex {
 
 .artifact-manuscripts > li {
   min-width: 0;
+  --paper-angle: -0.28deg;
+  --paper-offset: 0rem;
+}
+
+.artifact-manuscripts > li:nth-child(2) {
+  --paper-angle: 0.32deg;
+  --paper-offset: 0.35rem;
+}
+
+.artifact-manuscripts > li:nth-child(3) {
+  --paper-angle: -0.18deg;
+  --paper-offset: 0.1rem;
 }
 
 .artifact-manuscript {
@@ -3017,17 +3029,10 @@ pre.bibtex {
   overflow: hidden;
   background: #f7f5ef;
   box-shadow: 0 1.2rem 2.6rem rgba(0, 0, 0, 0.25);
-  transform: rotate(-0.28deg);
+  z-index: 1;
+  transform: translateY(var(--paper-offset)) rotate(var(--paper-angle));
   transform-origin: 50% 100%;
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-
-.artifact-manuscripts > li:nth-child(2) .artifact-page {
-  transform: rotate(0.32deg) translateY(0.35rem);
-}
-
-.artifact-manuscripts > li:nth-child(3) .artifact-page {
-  transform: rotate(-0.18deg) translateY(0.1rem);
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .artifact-page img {
@@ -3050,8 +3055,15 @@ pre.bibtex {
 }
 
 .artifact-manuscript:hover .artifact-page {
-  transform: translateY(-0.35rem) rotate(0deg);
-  box-shadow: 0 1.6rem 3rem rgba(0, 0, 0, 0.34);
+  z-index: 4;
+  transform: translateY(-0.7rem) rotate(0deg) scale(1.1);
+  box-shadow: 0 1.9rem 3.6rem rgba(0, 0, 0, 0.42);
+}
+
+.artifact-manuscript:focus-visible .artifact-page {
+  z-index: 4;
+  transform: translateY(-0.7rem) rotate(0deg) scale(1.1);
+  box-shadow: 0 1.9rem 3.6rem rgba(0, 0, 0, 0.42);
 }
 
 .artifact-manuscript:focus-visible {
@@ -3138,9 +3150,7 @@ pre.bibtex {
     gap: 1rem;
   }
 
-  .artifact-page,
-  .artifact-manuscripts > li:nth-child(2) .artifact-page,
-  .artifact-manuscripts > li:nth-child(3) .artifact-page {
+  .artifact-page {
     transform: none;
   }
 
@@ -3170,5 +3180,14 @@ pre.bibtex {
 @media (prefers-reduced-motion: reduce) {
   .artifact-page {
     transition: none;
+  }
+}
+
+@media (hover: none) {
+  .artifact-manuscript:hover .artifact-page,
+  .artifact-manuscript:focus-visible .artifact-page {
+    z-index: 1;
+    transform: none;
+    box-shadow: 0 1.2rem 2.6rem rgba(0, 0, 0, 0.25);
   }
 }
