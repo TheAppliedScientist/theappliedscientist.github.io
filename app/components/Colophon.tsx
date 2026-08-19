@@ -7,9 +7,10 @@ import { site } from "../site.config";
 export default function Colophon() {
   return (
     <footer className="colophon" id="citation">
-      <div className="page">
+      <div className="colophon-inner">
         <div className="colophon-grid">
           <div>
+            <p className="eyebrow">AppliedScientist</p>
             <h2>Citation</h2>
             <pre className="bibtex">
 {`@inproceedings{appliedscientist2027,
@@ -21,10 +22,9 @@ export default function Colophon() {
 }`}
             </pre>
             <p className="colophon-note">
-              Every figure and number on this site is taken from the
-              submitted manuscript and its appendix. Review excerpts are
-              quoted verbatim from reviews generated during the runs, with
-              the version judged and the score it received.
+              Every figure and number on this site is taken from the submitted
+              manuscript and its appendix. Review excerpts are quoted verbatim
+              from reviews generated during the runs.
             </p>
           </div>
           <div className="colophon-facts">
@@ -38,7 +38,7 @@ export default function Colophon() {
             </div>
             <div className="colophon-fact">
               <span className="label">Code &amp; data</span>
-              <p>Released on publication.</p>
+              <p>{site.release.code}.</p>
             </div>
             <div className="colophon-fact">
               <span className="label">Authors</span>

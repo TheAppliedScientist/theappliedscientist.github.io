@@ -40,7 +40,7 @@ export default function WeaknessBars({ categories }: { categories: Cat[] }) {
   const W = 560;
   const ML = 52, MR = 18, MT = 26, MB = 58;
   const iw = W - ML - MR; // 490
-  const ih = 340;
+  const ih = 306;
   const H = MT + ih + MB;
 
   const slot = iw / categories.length;

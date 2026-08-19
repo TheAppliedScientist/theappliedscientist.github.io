@@ -18,18 +18,18 @@ export const metadata: Metadata = {
     title: site.title,
     description: site.description,
     type: "article",
-    images: [{ url: "/img/og-card.png", width: 1200, height: 630 }],
+    images: [{ url: "/img/og-card.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: site.title,
     description: site.description,
-    images: ["/img/og-card.png"],
+    images: ["/img/og-card.jpg"],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FDFDFC",
+  themeColor: "#F3F0E9",
   width: "device-width",
   initialScale: 1,
 };

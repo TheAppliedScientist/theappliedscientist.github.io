@@ -1,5 +1,5 @@
 {
- "source": "Paper/LATEST/AIForDiscovery_Alex_AAAI27/Figures/agenticjudge_comparison.pdf, Appendix §A.2 (fig:agenticJudge)",
+ "source": "Paper_AAAI27_Latest/Figures/agenticjudge_comparison.pdf, Appendix §A.2 (fig:agenticJudge)",
  "n_papers": 115,
  "criteria": ["overlap", "fabrication", "calibration"],
  "criteria_labels": {

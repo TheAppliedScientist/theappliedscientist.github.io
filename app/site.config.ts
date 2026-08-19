@@ -23,4 +23,8 @@ export const site = {
     code: "",
     data: "",
   },
+  release: {
+    code: "Released on publication",
+    data: "Released on publication",
+  },
 } as const;

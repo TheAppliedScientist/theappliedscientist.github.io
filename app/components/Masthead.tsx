@@ -1,12 +1,11 @@
-import Link from "next/link";
 import { site } from "../site.config";
 
 const NAV = [
-  { href: "#system", label: "System" },
-  { href: "#reviewer", label: "Reviewer" },
+  { href: "#system", label: "Revision loop" },
+  { href: "#reviewer", label: "Reviewer evaluation" },
   { href: "#results", label: "Results" },
-  { href: "#finding", label: "Finding" },
-  { href: "#papers", label: "Papers" },
+  { href: "#finding", label: "What revision improves" },
+  { href: "#papers", label: "Examples" },
 ];
 
 /**
@@ -17,19 +16,22 @@ export default function Masthead() {
   return (
     <header className="masthead">
       <div className="masthead-inner">
-        <Link href="/" className="masthead-name">
-          AppliedScientist
-        </Link>
+        <a href="#top" className="masthead-name" aria-label="AppliedScientist, back to top">
+          <span className="masthead-mark" aria-hidden="true">A/S</span>
+          <span>AppliedScientist</span>
+        </a>
         <nav className="masthead-nav" aria-label="Sections">
-          {NAV.map((n) => (
+          {NAV.map((n, index) => (
             <a key={n.href} href={n.href}>
+              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               {n.label}
             </a>
           ))}
         </nav>
-        <a className="masthead-cta" href={site.links.paper}>
-          Paper (PDF)
-        </a>
+        <div className="masthead-actions">
+          {site.links.code ? <a href={site.links.code}>Code</a> : <span title={site.release.code}>Code</span>}
+          <a className="masthead-paper" href={site.links.paper}>Paper <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </header>
   );

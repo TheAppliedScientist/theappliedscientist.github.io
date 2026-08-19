@@ -9,11 +9,11 @@ type Sys = { name: string; rho: number; agreement: number; ours: boolean };
  * that in one read.
  */
 export default function AlignmentPlot({ systems }: { systems: Sys[] }) {
-  // square panel: the two axes measure comparable things, so the plot
-  // area is given the same length on both
+  // wide panel: fills a full column width without becoming too tall to
+  // sit beside a table, so the plot area is wider than tall (~1.5:1).
   const W = 460;
   const ML = 52, MR = 24, MT = 18, MB = 46;
-  const iw = W - ML - MR, ih = iw;
+  const iw = W - ML - MR, ih = Math.round(iw * 0.66);
   const H = MT + ih + MB;
 
   const xMin = 0.45, xMax = 0.60;
@@ -22,7 +22,7 @@ export default function AlignmentPlot({ systems }: { systems: Sys[] }) {
   const y = (v: number) => MT + ih - ((v - yMin) / (yMax - yMin)) * ih;
 
   return (
-    <div className="figure-interactive" data-size="small">
+    <div className="figure-interactive figure-wide" data-size="large">
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img"
         aria-label="Spearman correlation against decision agreement for each reviewer">
         {[65, 70, 75].map((v) => (
@@ -46,7 +46,7 @@ export default function AlignmentPlot({ systems }: { systems: Sys[] }) {
         </text>
         <text className="ax-title" transform={`rotate(-90 14 ${MT + ih / 2})`}
           x={14} y={MT + ih / 2} textAnchor="middle">
-          Agreement within one point
+          Accept/reject agreement
         </text>
 
         {systems.map((s) => {
@@ -54,7 +54,7 @@ export default function AlignmentPlot({ systems }: { systems: Sys[] }) {
           // "Ours (DeepSeek V4 Flash)" -> "our harness — DeepSeek V4 Flash":
           // the backbone is a detail of our reviewer, not a separate system.
           const backbone = s.name.replace("Ours (", "").replace(")", "");
-          const label = s.ours ? `our reviewer — ${backbone}` : s.name;
+          const label = s.ours ? `our reviewer (${backbone})` : s.name;
           const below = backbone === "MiniMax M2.7";
           // a point near the right edge has no room for a label to its right
           const flip = x(s.rho) > ML + iw * 0.68;

@@ -24,7 +24,7 @@ export default function ThresholdSlope({
   const W = 400;
   const ML = 30, MR = 8, MT = 26, MB = 66;
   const iw = W - ML - MR;
-  const ih = 240;
+  const ih = Math.round(W / 2.0) - MT - MB;
   const H = MT + ih + MB;
 
   const y = (count: number) => MT + ih - (count / n) * ih;

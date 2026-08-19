@@ -3,8 +3,8 @@
 Extract every number the website shows into typed JSON.
 
 RULE (per project owner): values must match the paper exactly —
-Paper/AnonymousSubmission2027.tex and the figures actually included in the
-submission (Paper/Figures/*.pdf, verified by rendering them). Local compiled
+Paper_AAAI27_Latest/AnonymousSubmission2027.tex and the figures actually
+included in the submission (Paper_AAAI27_Latest/Figures/*.pdf, verified by rendering them). Local compiled
 JSONs and RAW_RESULTS.md are an older 19-paper run and are NOT used, except
 fig3b_categories.json whose contents were verified identical to the
 submission's weakness-resolution figure.
@@ -17,14 +17,9 @@ import json
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-PAPER = os.path.join(ROOT, "Paper")
+PAPER = os.path.join(ROOT, "Paper_AAAI27_Latest")
 OUT = os.path.join(ROOT, "website", "app", "data")
 os.makedirs(OUT, exist_ok=True)
-
-
-def load(name):
-    with open(os.path.join(PAPER, "compiled", name), encoding="utf-8") as fh:
-        return json.load(fh)
 
 
 def dump(name, obj):
@@ -35,7 +30,7 @@ def dump(name, obj):
 
 
 # ---------------------------------------------------------------- headline
-# All values trace to Paper/AnonymousSubmission2027.tex (tagged per entry).
+# All values trace to Paper_AAAI27_Latest/AnonymousSubmission2027.tex.
 dump("key_stats.json", {
     "papers": 30,                    # tab:benchmark (25 rejected + 5 borderline)
     "rejected": 25,
@@ -100,11 +95,17 @@ dump("aiinit_trajectory.json", {
 })
 
 # --------------------------------------------------- weakness ladder (E2)
-# Verified identical to the submission figure Figures/weakness_resolution.pdf
-# (100/94/86/71/63/11, idea 2/18 = 11.1% — matches tex §What Can Revision
-# Improve?). This is the one compiled JSON whose contents match the paper.
-_fig3b = load("fig3b_categories.json")
-cats = _fig3b["categories"]
+# Transcribed from Figures/weakness_resolution.pdf and the counts reported in
+# §What Can Revision Improve? Wilson intervals are the values printed by the
+# figure-generation source and retained for the interactive chart.
+cats = [
+    {"name": "Presentation & clarity", "good": 24, "n": 24, "rate": 1.00, "ci": [.86, 1.00], "kind": "execution"},
+    {"name": "Ablations & analysis", "good": 45, "n": 48, "rate": .94, "ci": [.83, .98], "kind": "execution"},
+    {"name": "Rigor & validity", "good": 32, "n": 37, "rate": .86, "ci": [.72, .94], "kind": "execution"},
+    {"name": "Baselines & comparison", "good": 10, "n": 14, "rate": .71, "ci": [.45, .88], "kind": "execution"},
+    {"name": "Scope & generalization", "good": 17, "n": 27, "rate": .63, "ci": [.44, .78], "kind": "execution"},
+    {"name": "Idea / novelty", "good": 2, "n": 18, "rate": .111, "ci": [.03, .33], "kind": "idea"},
+]
 dump("weakness_ladder.json", {
     "categories": [
         {"name": c["name"], "resolved": c["good"], "total": c["n"],
@@ -112,7 +113,7 @@ dump("weakness_ladder.json", {
          "kind": c["kind"]}
         for c in cats
     ],
-    "note": _fig3b["note"],
+    "note": "168 venue-named weaknesses. Execution counts resolved and partial; idea counts resolved only. Wilson 95% CI.",
 })
 
 # --------------------------------------------------------- score thresholds

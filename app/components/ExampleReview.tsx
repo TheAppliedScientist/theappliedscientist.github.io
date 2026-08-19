@@ -123,6 +123,14 @@ export default function ExampleReview() {
             </a>
           </p>
         </div>
+        <div>
+          <span className="label">Revised manuscript</span>
+          <p>
+            <a href="/exhibits/idea09_revised.pdf">
+              Manuscript after revision (PDF)
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

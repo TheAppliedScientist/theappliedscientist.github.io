@@ -1,9 +1,7 @@
 import type { ReactNode } from "react";
 
 /**
- * Section — one numbered movement of the argument. The header pattern is
- * always the same: kicker (number + name), title, optional lede. Sections
- * are separated by whitespace, so the eye always knows where it is.
+ * Section — one numbered movement of the argument.
  */
 export function Section({
   id,
@@ -12,6 +10,7 @@ export function Section({
   title,
   lede,
   children,
+  narrow = false,
 }: {
   id: string;
   no: string;
@@ -19,17 +18,20 @@ export function Section({
   title: ReactNode;
   lede?: ReactNode;
   children: ReactNode;
+  narrow?: boolean;
 }) {
   return (
     <section className="section" id={id}>
-      <header className="sec-head">
-        <p className="sec-kicker">
-          <span className="sec-no">{no}</span> {name}
-        </p>
-        <h2 className="sec-title">{title}</h2>
-        {lede && <p className="sec-lede">{lede}</p>}
-      </header>
-      {children}
+      <div className={`section-inner ${narrow ? 'section-narrow' : ''}`}>
+        <header className="sec-head">
+          <p className="sec-kicker">
+            <span className="sec-no">{no}</span> {name}
+          </p>
+          <h2 className="sec-title">{title}</h2>
+          {lede && <p className="sec-lede">{lede}</p>}
+        </header>
+        {children}
+      </div>
     </section>
   );
 }
@@ -72,7 +74,7 @@ export function Detail({
   return (
     <details className="detail">
       <summary>
-        <span className="detail-mark" aria-hidden="true">+</span>
+        <span className="detail-mark" aria-hidden="true" />
         <span>{summary}</span>
         {count && <span className="detail-count">{count}</span>}
       </summary>

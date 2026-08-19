@@ -1,89 +1,27 @@
 import { site } from "../site.config";
 import stats from "../data/key_stats.json";
+import RevisionArtifact from "./figures/RevisionArtifact";
 
-/**
- * Hero — how the paper opens: title, authors, the abstract's own words as
- * the lead, and the three numbers that are the result.
- */
 export default function Hero() {
   return (
-    <div className="hero">
-      <h1 className="hero-title">
-        AppliedScientist: Automated Scientific Revision Through Iterative
-        AI Reviewing
-      </h1>
-
-      <p className="hero-authors">
-        {site.authors.map((a, i) => (
-          <span key={a.name}>
-            {i > 0 && <span className="author-sep">, </span>}
-            <a href={a.url}>{a.name}</a>
-          </span>
-        ))}
-      </p>
-
-      <p className="hero-lead">
-        As language models become increasingly capable of conducting research
-        and reviewing scientific papers, a natural question emerges: Can this
-        process of scientific review and revision itself be automated?
-      </p>
-
-      <div className="hero-links">
-        <a href={site.links.paper}>Paper (PDF)</a>
-        <a href="/exhibits/idea09_full_annotated.pdf">Annotated manuscript</a>
-        <span className="soon">Code &amp; data released on publication</span>
-      </div>
-
-      <div className="hero-stats">
-        <div className="stat">
-          <span className="stat-value">
-            {stats.v0_mean_ours} &rarr; {stats.vmax_mean_ours}
-          </span>
-          <span className="stat-label">
-            mean reviewer score, original &rarr; best revision
-          </span>
-          <span className="stat-sub">{stats.papers} papers &middot; 5 rounds</span>
-        </div>
-        <div className="stat">
-          <span className="stat-value">{stats.exec_rate}%</span>
-          <span className="stat-label">execution-related weaknesses resolved</span>
-          <span className="stat-sub">{stats.exec_resolved}</span>
-        </div>
-        <div className="stat" data-flag="true">
-          <span className="stat-value">{stats.idea_rate}%</span>
-          <span className="stat-label">idea-related weaknesses resolved</span>
-          <span className="stat-sub">{stats.idea_resolved}</span>
-        </div>
-      </div>
-
-      <div className="abstract-block">
-        <span className="label">Abstract</span>
-        <p>
-          Automated reviewing systems are increasingly evaluated based on the
-          quality of the reviews they produce. Yet a review is only useful if
-          acting on it leads to a measurable improvement in the paper. We
-          present AppliedScientist, a closed-loop system that couples an
-          autonomous AI scientist with an AI reviewer, and evaluate it by
-          iteratively revising rejected papers from a range of research
-          subfields. To mirror how human authors build on earlier drafts, the
-          AI scientist has access to its previous versions during revision.
-          To avoid bias from prior judgments, however, each review is
-          generated independently, with the reviewer having no memory of
-          earlier feedback or scores. We compare three revision settings: one
-          initialized with the original venue reviews, one initialized with
-          AI-generated reviews, and autonomous self-revision using the same
-          fixed prompt in every round. Because the reviewer both guides and
-          evaluates the revision, we also assess the human-initialized
-          revisions using Stanford Reviewer as an independent evaluator.
-          Reviewer-guided revision consistently improves more than
-          fixed-prompt self-revision, and Stanford Reviewer also assigns
-          higher scores to later revisions. AppliedScientist resolves 128 of
-          150 execution-related weaknesses (85.3%), but only 2 of 18
-          idea-related weaknesses (11.1%), suggesting that iterative revision
-          is effective at improving experiments and implementation, but
-          rarely changes concerns about novelty or significance.
+    <header className="hero" id="top">
+      <div className="hero-copy">
+        <h1 className="hero-title">{site.title}</h1>
+        <p className="hero-authors">
+          {site.authors.map((author) => (
+            <span key={author.name}>
+              <a href={author.url}>{author.name}</a>
+            </span>
+          ))}
         </p>
+        <p className="hero-question">Can this process of scientific review and revision itself be automated?</p>
+        <p className="hero-lead">We present AppliedScientist, a closed-loop system that couples an autonomous AI scientist with an AI reviewer, and evaluate it by iteratively revising rejected papers from a range of research subfields.</p>
+        <div className="hero-links" aria-label="Project links">
+          <a className="primary-link" href={site.links.paper}>Read the paper <span aria-hidden="true">↗</span></a>
+          {site.links.code ? <a href={site.links.code}>Code</a> : <span>Code · {site.release.code}</span>}
+        </div>
       </div>
-    </div>
+      <RevisionArtifact delta={stats.delta_ours} externalDelta={stats.delta_stanford} />
+    </header>
   );
 }

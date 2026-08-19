@@ -38,13 +38,13 @@ export default function Trajectory({
   const activeExtra = compareOptions?.find((c) => c.key === compare)?.series;
   const allSeries = activeExtra ? [...series, activeExtra] : series;
 
-  // square panel: the frame is as tall as it is wide, so the slope reads
-  // without being exaggerated by a wide letterbox
+  // A compact landscape panel keeps the complete trajectory visible within
+  // the chapter viewport. The right margin reserves room for direct labels.
   const W = 560;
   const ML = 42, MR = 150, MT = 14, MB = 38;
   const iw = W - ML - MR;
-  const ih = iw;
-  const H = MT + ih + MB;
+  const H = 330;
+  const ih = H - MT - MB;
   const yMin = 3.5, yMax = 6.75;
 
   const x = (r: number) => ML + (r / (rounds.length - 1)) * iw;
@@ -72,7 +72,7 @@ export default function Trajectory({
   });
 
   return (
-    <div className="figure-interactive" data-size="medium">
+    <div className="figure-interactive figure-wide" data-size="medium">
       {compareOptions && (
         <div className="compare-switch" role="tablist" aria-label="Compare against">
           {compareOptions.map((c) => (
@@ -158,9 +158,9 @@ export default function Trajectory({
               </text>
               <text className="ser-name" x={last.x + 9} y={(labelY[s.key] ?? last.y) + 16}
                 fill="var(--ink-faint)">
-                {s.key === "human" ? "human-init." :
-                 s.key === "stanford" ? "Stanford" :
-                 s.key === "ai" ? "AI-init." : "self-review prompt"}
+                {s.key === "human" ? "human-initialized" :
+                 s.key === "stanford" ? "Stanford (evaluation only)" :
+                 s.key === "ai" ? "AI-initialized" : "self-review prompt"}
               </text>
             </g>
           );
@@ -173,44 +173,6 @@ export default function Trajectory({
         ))}
       </svg>
 
-      <div className="fig-readout" aria-live="polite">
-        {hoverRound === null ? (
-          <span className="fig-readout-idle">Hover the plot for values at each round.</span>
-        ) : (
-          <>
-            <span className="fig-readout-round">V{hoverRound}</span>
-            {allSeries.map((s) => {
-              const v = s.values[rounds.indexOf(hoverRound)];
-              if (v === null || v === undefined) return null;
-              return (
-                <span key={s.key} className="fig-readout-item">
-                  <i style={{ background: COLOR[s.key] }} />
-                  {s.label} <b className="num">{v.toFixed(2)}</b>
-                </span>
-              );
-            })}
-          </>
-        )}
-      </div>
-
-      <div className="fig-legend">
-        {allSeries.map((s) => (
-          <button key={s.key} type="button" className="legend-btn"
-            aria-pressed={only === s.key}
-            onClick={() => setOnly(only === s.key ? null : s.key)}>
-            <svg width="22" height="8" aria-hidden="true">
-              <line x1="0" y1="4" x2="22" y2="4" stroke={COLOR[s.key]} strokeWidth="2"
-                strokeDasharray={s.key === "self" ? "5 3" : undefined} />
-            </svg>
-            {s.label}
-          </button>
-        ))}
-        {only && (
-          <button type="button" className="legend-btn legend-reset" onClick={() => setOnly(null)}>
-            show all
-          </button>
-        )}
-      </div>
       <span hidden id={`${uid}-desc`} />
     </div>
   );

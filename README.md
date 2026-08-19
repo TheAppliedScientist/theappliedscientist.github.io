@@ -21,7 +21,7 @@ python3 -m http.server -d out 8000
 
 ## Data (paper-exact rule)
 
-Every number on the site must match `Paper/AnonymousSubmission2027.tex`
+Every number on the site must match `Paper_AAAI27_Latest/AnonymousSubmission2027.tex`
 (the submission) — not local result files, which can be stale. The single
 source of truth is:
 

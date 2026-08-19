@@ -1,5 +1,5 @@
 {
- "source": "Paper/LATEST/AIForDiscovery_Alex_AAAI27/Figures/domain_trajectory_stanford.pdf, Appendix §B.3 (fig:eacDom) — values read from vector marker positions against the printed axis ticks",
+ "source": "Paper_AAAI27_Latest/Figures/domain_trajectory_stanford.pdf, Appendix §B.3 (fig:eacDom) — values read from vector marker positions against the printed axis ticks",
  "rounds": [0, 1, 2, 3, 4, 5],
  "domains": [
   {"name": "NLP", "v0_human": 3.92, "ours": [3.92, 4.67, 5.24, 5.53, 5.95, 5.98]},
