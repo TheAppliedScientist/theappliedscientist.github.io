@@ -2937,123 +2937,238 @@ pre.bibtex {
   margin: 0;
 }
 
-.annotated-papers {
-  margin: 0 0 0.7rem;
+/* ---------- annotated revision outputs ---------- */
+
+.artifacts-chapter {
+  padding-block: clamp(2.8rem, 5vw, 4.5rem);
+  overflow: hidden;
+  background: #272521;
+  color: #f1ece3;
 }
 
-.annotated-papers > .label {
-  display: block;
-  margin: 0 0 0.35rem;
-  color: #e16a59;
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  font-weight: 650;
-  letter-spacing: 0.055em;
-  text-transform: uppercase;
+.artifacts-chapter .chapter-index {
+  color: #aaa398;
 }
 
-.annotated-papers h3 {
-  margin: 0 0 1.15rem;
-  color: var(--page);
-  font-family: var(--serif);
-  font-size: clamp(1.55rem, 2.1vw, 2rem);
-  font-weight: 500;
-  line-height: 1.12;
+.artifacts-chapter .chapter-index span:first-child,
+.artifacts-chapter .eyebrow {
+  color: #ee7866;
 }
 
-.annotated-paper-list {
+.artifacts-body {
   display: grid;
-  gap: 0.62rem;
-  margin: 0;
+  gap: clamp(1.8rem, 3.5vw, 2.8rem);
+}
+
+.artifacts-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+  align-items: end;
+  gap: clamp(2rem, 7vw, 7rem);
+}
+
+.artifacts-head h2 {
+  max-width: 34ch;
+  margin: 0.35rem 0 0;
+  color: #f7f1e8;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 2.8vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.artifacts-head > p {
+  max-width: 36ch;
+  margin: 0 0 0.2rem;
+  color: #cbc4b8;
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.artifact-manuscripts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(1.2rem, 2.6vw, 2.6rem);
+  width: min(100%, 68rem);
+  margin: 0 auto;
   padding: 0;
   list-style: none;
 }
 
-.annotated-paper-list li {
+.artifact-manuscripts > li {
   min-width: 0;
 }
 
-.colophon .annotated-paper-link {
+.artifact-manuscript {
   display: grid;
-  grid-template-columns: 2rem minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.8rem;
-  min-height: 5.35rem;
-  padding: 0.85rem 0.95rem 0.85rem 0.2rem;
-  color: var(--page);
+  gap: 1.15rem;
+  color: inherit;
   border: 0;
-  border-radius: 0.35rem 1.15rem 0.35rem 0.35rem;
-  background: rgba(255, 255, 255, 0.045);
   text-decoration: none;
-  transition: background-color 160ms ease, transform 160ms ease;
 }
 
-.colophon .annotated-paper-link:hover {
-  border: 0;
-  background: rgba(255, 255, 255, 0.085);
-  transform: translateX(0.18rem);
+.artifact-page {
+  position: relative;
+  display: block;
+  aspect-ratio: 1100 / 1424;
+  overflow: hidden;
+  background: #f7f5ef;
+  box-shadow: 0 1.2rem 2.6rem rgba(0, 0, 0, 0.25);
+  transform: rotate(-0.28deg);
+  transform-origin: 50% 100%;
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.colophon .annotated-paper-link:focus-visible {
-  outline: 3px solid #e16a59;
-  outline-offset: 3px;
+.artifact-manuscripts > li:nth-child(2) .artifact-page {
+  transform: rotate(0.32deg) translateY(0.35rem);
 }
 
-.annotated-paper-index {
-  align-self: start;
-  padding-top: 0.1rem;
-  color: #e16a59;
+.artifact-manuscripts > li:nth-child(3) .artifact-page {
+  transform: rotate(-0.18deg) translateY(0.1rem);
+}
+
+.artifact-page img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artifact-page-note {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 0.6rem;
+  padding: 0.28rem 0.48rem;
+  background: rgba(39, 37, 33, 0.88);
+  color: #f7f1e8;
   font-family: var(--mono);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
-
-.annotated-paper-copy {
-  display: grid;
-  min-width: 0;
-  gap: 0.25rem;
-}
-
-.annotated-paper-role {
-  color: color-mix(in srgb, var(--page) 62%, transparent);
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.68rem;
   letter-spacing: 0.02em;
 }
 
-.annotated-paper-title {
-  color: var(--page);
-  font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 530;
-  line-height: 1.32;
+.artifact-manuscript:hover .artifact-page {
+  transform: translateY(-0.35rem) rotate(0deg);
+  box-shadow: 0 1.6rem 3rem rgba(0, 0, 0, 0.34);
 }
 
-.annotated-paper-action {
-  color: #dce8f4;
-  font-family: var(--sans);
+.artifact-manuscript:focus-visible {
+  outline: 3px solid #ee7866;
+  outline-offset: 0.55rem;
+}
+
+.artifact-caption {
+  display: grid;
+  gap: 0.52rem;
+}
+
+.artifact-caption-topline {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.artifact-number {
+  color: #ee7866;
+  font-family: var(--mono);
   font-size: 0.82rem;
   font-weight: 650;
-  white-space: nowrap;
 }
 
-@media (max-width: 520px) {
-  .colophon .annotated-paper-link {
-    grid-template-columns: 1.7rem minmax(0, 1fr);
-    gap: 0.55rem;
-    padding-right: 0.8rem;
+.artifact-role {
+  color: #aaa398;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.artifact-title {
+  max-width: 32ch;
+  color: #f7f1e8;
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.artifact-action {
+  width: max-content;
+  margin-top: 0.12rem;
+  padding: 0.58rem 0.82rem;
+  border-radius: 0.28rem 0.8rem 0.28rem 0.28rem;
+  background: #f3ede3;
+  color: #272521;
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .artifacts-head {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .annotated-paper-action {
-    grid-column: 2;
-    margin-top: 0.15rem;
+  .artifacts-head > p {
+    max-width: 55ch;
+  }
+
+  .artifact-manuscripts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .artifact-manuscripts {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    width: 100%;
+  }
+
+  .artifact-manuscripts > li {
+    width: 100%;
+  }
+
+  .artifact-manuscript {
+    grid-template-columns: 8.6rem minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .artifact-page,
+  .artifact-manuscripts > li:nth-child(2) .artifact-page,
+  .artifact-manuscripts > li:nth-child(3) .artifact-page {
+    transform: none;
+  }
+
+  .artifact-page-note {
+    right: 0.35rem;
+    bottom: 0.35rem;
+    padding: 0.2rem 0.32rem;
+    font-size: 0.57rem;
+  }
+
+  .artifact-caption {
+    align-content: center;
+    gap: 0.45rem;
+  }
+
+  .artifact-title {
+    font-size: 0.98rem;
+    line-height: 1.32;
+  }
+
+  .artifact-action {
+    padding: 0.5rem 0.66rem;
+    font-size: 0.76rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .colophon .annotated-paper-link {
+  .artifact-page {
     transition: none;
   }
 }
