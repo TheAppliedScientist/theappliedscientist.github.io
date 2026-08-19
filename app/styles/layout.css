@@ -3028,6 +3028,7 @@ pre.bibtex {
   aspect-ratio: 1100 / 1424;
   overflow: hidden;
   background: #f7f5ef;
+  cursor: zoom-in;
   box-shadow: 0 1.2rem 2.6rem rgba(0, 0, 0, 0.25);
   z-index: 1;
   transform: translateY(var(--paper-offset)) rotate(var(--paper-angle));
@@ -3055,15 +3056,15 @@ pre.bibtex {
 }
 
 .artifact-manuscript:hover .artifact-page {
-  z-index: 4;
-  transform: translateY(-0.7rem) rotate(0deg) scale(1.1);
-  box-shadow: 0 1.9rem 3.6rem rgba(0, 0, 0, 0.42);
+  z-index: 2;
+  transform: translateY(-0.25rem) rotate(0deg) scale(1.015);
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.34);
 }
 
 .artifact-manuscript:focus-visible .artifact-page {
-  z-index: 4;
-  transform: translateY(-0.7rem) rotate(0deg) scale(1.1);
-  box-shadow: 0 1.9rem 3.6rem rgba(0, 0, 0, 0.42);
+  z-index: 2;
+  transform: translateY(-0.25rem) rotate(0deg) scale(1.015);
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.34);
 }
 
 .artifact-manuscript:focus-visible {
@@ -3114,6 +3115,106 @@ pre.bibtex {
   color: #272521;
   font-family: var(--sans);
   font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.artifact-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  overflow: hidden;
+  background: rgba(12, 11, 9, 0.82);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  backdrop-filter: blur(7px) saturate(0.72);
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.artifact-lightbox.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.artifact-lightbox-beam {
+  position: absolute;
+  top: -8vh;
+  left: 50%;
+  width: min(78vw, 70rem);
+  height: 112vh;
+  transform: translateX(-50%);
+  clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 238, 184, 0.2) 0%,
+    rgba(255, 240, 197, 0.1) 48%,
+    rgba(255, 244, 216, 0.025) 100%
+  );
+  opacity: 0;
+  transition: opacity 380ms ease 40ms;
+}
+
+.artifact-lightbox.is-visible .artifact-lightbox-beam {
+  opacity: 1;
+}
+
+.artifact-lightbox-lamp {
+  position: absolute;
+  top: -0.15rem;
+  left: 50%;
+  z-index: 2;
+  width: 4.8rem;
+  height: 1.05rem;
+  transform: translateX(-50%);
+  border-radius: 0 0 50% 50%;
+  background: #191713;
+  box-shadow: 0 0.5rem 1.7rem rgba(255, 227, 151, 0.62);
+}
+
+.artifact-lightbox-stage {
+  position: absolute;
+  inset: 2.4rem 2rem 1.5rem;
+  z-index: 3;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  place-items: center;
+  gap: 0.8rem;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(2.2rem) scale(0.9);
+  transition: opacity 210ms ease, transform 330ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.artifact-lightbox.is-visible .artifact-lightbox-stage {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.artifact-lightbox-stage img {
+  display: block;
+  width: auto;
+  max-width: min(76vw, 58rem);
+  height: 100%;
+  max-height: calc(100vh - 6.8rem);
+  object-fit: contain;
+  background: #fff;
+  box-shadow:
+    0 2.2rem 5rem rgba(0, 0, 0, 0.58),
+    0 0 3.5rem rgba(255, 235, 177, 0.14);
+}
+
+.artifact-lightbox-stage figcaption {
+  max-width: min(86vw, 64rem);
+  color: #f4eee4;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.artifact-lightbox-stage figcaption span {
+  margin-right: 0.65rem;
+  color: #ee7866;
   font-weight: 700;
 }
 
@@ -3178,12 +3279,19 @@ pre.bibtex {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .artifact-page {
+  .artifact-page,
+  .artifact-lightbox,
+  .artifact-lightbox-beam,
+  .artifact-lightbox-stage {
     transition: none;
   }
 }
 
 @media (hover: none) {
+  .artifact-lightbox {
+    display: none;
+  }
+
   .artifact-manuscript:hover .artifact-page,
   .artifact-manuscript:focus-visible .artifact-page {
     z-index: 1;

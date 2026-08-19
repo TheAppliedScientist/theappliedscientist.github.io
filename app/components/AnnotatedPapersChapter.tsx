@@ -1,6 +1,18 @@
+"use client";
+
+import { useState } from "react";
 import { site } from "../site.config";
 
 export default function AnnotatedPapersChapter() {
+  const [previewIndex, setPreviewIndex] = useState(0);
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const previewPaper = site.annotatedPapers[previewIndex];
+
+  const showPreview = (index: number) => {
+    setPreviewIndex(index);
+    setPreviewOpen(true);
+  };
+
   return (
     <section className="research-chapter artifacts-chapter" id="artifacts">
       <div className="chapter-index">
@@ -29,6 +41,13 @@ export default function AnnotatedPapersChapter() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open annotated paper: ${paper.title}`}
+                onMouseEnter={() => showPreview(index)}
+                onMouseLeave={() => setPreviewOpen(false)}
+                onFocus={() => showPreview(index)}
+                onBlur={() => setPreviewOpen(false)}
+                onKeyDown={(event) => {
+                  if (event.key === "Escape") setPreviewOpen(false);
+                }}
               >
                 <span className="artifact-page">
                   <img
@@ -57,6 +76,26 @@ export default function AnnotatedPapersChapter() {
             </li>
           ))}
         </ol>
+
+        <div
+          className={`artifact-lightbox${previewOpen ? " is-visible" : ""}`}
+          aria-hidden="true"
+        >
+          <span className="artifact-lightbox-lamp" />
+          <span className="artifact-lightbox-beam" />
+          <figure className="artifact-lightbox-stage">
+            <img
+              src={previewPaper.detail}
+              alt=""
+              width="2000"
+              height="2589"
+            />
+            <figcaption>
+              <span>{previewPaper.role}</span>
+              {previewPaper.title}
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
   );
