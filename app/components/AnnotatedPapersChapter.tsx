@@ -121,10 +121,19 @@ export default function AnnotatedPapersChapter() {
               aria-label={`Open full annotated PDF: ${previewPaper.title}`}
             >
               <img
+                className="artifact-lightbox-page-base"
                 src={previewPaper.detail}
                 alt=""
                 width="2000"
                 height="2589"
+              />
+              <img
+                className="artifact-lightbox-page-lit"
+                src={previewPaper.detail}
+                alt=""
+                width="2000"
+                height="2589"
+                aria-hidden="true"
               />
             </a>
             <figcaption>
