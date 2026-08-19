@@ -10,7 +10,7 @@ export default function SystemChapter() {
           <h2>AppliedScientist consists of two components</h2>
           <p>A scientist that revises the implementation, experiments, and manuscript, and an AI reviewer that independently reviews each revision and provides feedback for the next iteration.</p>
 
-          <EvidenceDrawer title="Experimental setup" trigger="Experiment protocol">
+          <EvidenceDrawer title="Experimental setup" trigger="Revision conditions, retained history, and computation" actionLabel="View experiment protocol">
             <div className="evidence-prose">
               <p>The scientist retains its previous code, results, manuscripts, and feedback so that revisions accumulate and the reviewer retains no history, preventing earlier judgments or scores from biasing its assessment of the current version.</p>
               <p>Given a rejected paper, its source repository, and current feedback, the scientist is instructed to address every reviewer concern while determining how each should be resolved. Depending on the feedback, this may require inspecting the repository and manuscript, searching the literature, editing implementation, reproducing results, adding baselines and presenting ablations, executing new experiments and analyzing the results and updating the manuscript.</p>
@@ -24,7 +24,7 @@ export default function SystemChapter() {
               <dl className="protocol-facts">
                 <div><dt>Evaluation set</dt><dd>25 rejected and 5 borderline-accepted ICLR papers</dd></div>
                 <div><dt>Revision rounds</dt><dd>V₀ original; V₁–V₅ successive revisions</dd></div>
-                <div><dt>Compute</dt><dd>Approximately 9 hours per round on a 96 GB VRAM GPU</dd></div>
+                <div><dt>Compute</dt><dd>Approximately 9 hours per paper for the complete five-round revision run on a 96 GB VRAM GPU</dd></div>
                 <div><dt>External evaluation</dt><dd>Stanford Reviewer scores the human-initialized trajectory only</dd></div>
               </dl>
             </div>

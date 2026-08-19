@@ -28,12 +28,52 @@ export default function Colophon() {
             </p>
           </div>
           <div className="colophon-facts">
+            <section
+              className="annotated-papers"
+              aria-labelledby="annotated-papers-title"
+            >
+              <p className="label">Revision artifacts</p>
+              <h3 id="annotated-papers-title">Annotated papers</h3>
+              <ol className="annotated-paper-list">
+                {site.annotatedPapers.map((paper, index) => (
+                  <li key={paper.href}>
+                    <a
+                      className="annotated-paper-link"
+                      href={paper.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span className="annotated-paper-index" aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="annotated-paper-copy">
+                        <span className="annotated-paper-role">{paper.role}</span>
+                        <span className="annotated-paper-title">{paper.title}</span>
+                      </span>
+                      <span className="annotated-paper-action">
+                        Open PDF <span aria-hidden="true">↗</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </section>
             <div className="colophon-fact">
               <span className="label">Paper</span>
               <p>
-                <a href="/exhibits/AnonymousSubmission2027.pdf">
+                <a href={site.links.paper}>
                   Submission (PDF)
                 </a>
+              </p>
+            </div>
+            <div className="colophon-fact">
+              <span className="label">Example revision artifacts</span>
+              <p className="artifact-links">
+                <a href="/exhibits/idea09_original_score4.pdf">Original manuscript</a>
+                <span aria-hidden="true"> · </span>
+                <a href="/exhibits/idea09_revised.pdf">Revised manuscript</a>
+                <span aria-hidden="true"> · </span>
+                <a href="/exhibits/idea09_full_annotated.pdf">Annotated manuscript</a>
               </p>
             </div>
             <div className="colophon-fact">

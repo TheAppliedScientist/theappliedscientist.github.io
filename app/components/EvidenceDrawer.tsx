@@ -5,9 +5,10 @@ import { useId, useRef, useState } from "react";
 
 export type EvidenceTab = { label: string; content: ReactNode };
 
-export default function EvidenceDrawer({ title, trigger, children, tabs }: {
+export default function EvidenceDrawer({ title, trigger, actionLabel, children, tabs }: {
   title: string;
   trigger: string;
+  actionLabel?: string;
   children?: ReactNode;
   tabs?: EvidenceTab[];
 }) {
@@ -19,10 +20,12 @@ export default function EvidenceDrawer({ title, trigger, children, tabs }: {
 
   return (
     <>
-      <button ref={triggerRef} type="button" className="evidence-trigger"
+      <button ref={triggerRef} type="button"
+        className={`evidence-trigger${actionLabel ? " evidence-trigger-action" : ""}`}
+        aria-label={actionLabel ? `${actionLabel}: ${trigger}` : undefined}
         onClick={() => dialogRef.current?.showModal()}>
-        <span>{trigger}</span>
-        <span aria-hidden="true">Open evidence ↗</span>
+        <span>{actionLabel ?? trigger}</span>
+        <span aria-hidden="true">{actionLabel ? "↗" : "Open evidence ↗"}</span>
       </button>
       <dialog ref={dialogRef} className="evidence-dialog" aria-labelledby={titleId}
         onClose={() => triggerRef.current?.focus()}

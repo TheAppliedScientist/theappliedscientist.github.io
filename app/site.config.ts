@@ -23,6 +23,26 @@ export const site = {
     code: "",
     data: "",
   },
+  annotatedPapers: [
+    {
+      role: "Headline paper",
+      title:
+        "Context is the Key: Backdoor Attacks for In-Context Learning with Vision Transformers",
+      href: "/exhibits/annotated-context-is-the-key.pdf",
+    },
+    {
+      role: "Persuasion and vigilance",
+      title:
+        "Under the Influence: Quantifying Persuasion and Vigilance in Large Language Models",
+      href: "/exhibits/annotated-persuasion-and-vigilance.pdf",
+    },
+    {
+      role: "Memorization and interpolation",
+      title:
+        "Memorization or Interpolation? What Perturbation Sensitivity Actually Detects in Language Models",
+      href: "/exhibits/annotated-memorization-or-interpolation.pdf",
+    },
+  ],
   release: {
     code: "Released on publication",
     data: "Released on publication",

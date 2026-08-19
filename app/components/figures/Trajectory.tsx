@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useId, useState } from "react";
 
 type Series = { key: string; label: string; values: (number | null)[]; note?: string };
@@ -24,10 +25,12 @@ export default function Trajectory({
   rounds,
   series,
   compareOptions,
+  toolbarAction,
 }: {
   rounds: number[];
   series: Series[];
   compareOptions?: { key: string; label: string; series: Series }[];
+  toolbarAction?: ReactNode;
   height?: number;
 }) {
   const uid = useId().replace(/:/g, "");
@@ -73,15 +76,18 @@ export default function Trajectory({
 
   return (
     <div className="figure-interactive figure-wide" data-size="medium">
-      {compareOptions && (
-        <div className="compare-switch" role="tablist" aria-label="Compare against">
-          {compareOptions.map((c) => (
-            <button key={c.key} type="button" role="tab"
-              aria-selected={compare === c.key}
-              onClick={() => setCompare(c.key)}>
-              {c.label}
-            </button>
-          ))}
+      {(compareOptions || toolbarAction) && (
+        <div className="trajectory-controls">
+          {compareOptions && <div className="compare-switch" role="tablist" aria-label="Compare against">
+            {compareOptions.map((c) => (
+              <button key={c.key} type="button" role="tab"
+                aria-selected={compare === c.key}
+                onClick={() => setCompare(c.key)}>
+                {c.label}
+              </button>
+            ))}
+          </div>}
+          {toolbarAction && <div className="trajectory-toolbar-action">{toolbarAction}</div>}
         </div>
       )}
 

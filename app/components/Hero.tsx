@@ -21,7 +21,12 @@ export default function Hero() {
           {site.links.code ? <a href={site.links.code}>Code</a> : <span>Code · {site.release.code}</span>}
         </div>
       </div>
-      <RevisionArtifact delta={stats.delta_ours} externalDelta={stats.delta_stanford} />
+      <RevisionArtifact
+        delta={stats.delta_ours}
+        externalDelta={stats.delta_stanford}
+        executionRate={stats.exec_rate}
+        executionResolved={stats.exec_resolved}
+      />
     </header>
   );
 }

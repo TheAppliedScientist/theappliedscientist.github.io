@@ -89,7 +89,7 @@ export default function LoopDiagram() {
 
         {/* round counter */}
         <text className="dg-meta" x={8} y={38}>
-          five rounds · ≈9 h per round · single 96 GB GPU
+          five rounds · ≈9 h per paper · single 96 GB GPU
         </text>
         <line x1={8} y1={50} x2={892} y2={50} stroke="var(--rule)" strokeWidth={1} />
       </svg>

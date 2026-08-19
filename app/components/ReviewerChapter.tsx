@@ -24,7 +24,7 @@ export default function ReviewerChapter() {
             <p className="reviewer-reading-main">Our Reviewer with DeepSeek V4 Flash shows the strongest alignment with venue reviews on both measures.</p>
             <p className="reviewer-reading-note">The Stanford Reviewer falls between the strongest and weakest backbones. Systems farther toward the upper right align more closely with venue ratings and decisions.</p>
 
-            <EvidenceDrawer title="Reviewer evaluation" trigger="Explore the reviewer evaluation" tabs={[
+            <EvidenceDrawer title="Reviewer evaluation" trigger="Pairwise evaluation, AgenticJudge, and human alignment" actionLabel="View reviewer evidence" tabs={[
               { label: "Pairwise evaluation", content: <BaselineTable /> },
               { label: "AgenticJudge", content: <AgenticJudgeTable /> },
               { label: "Human alignment", content: <div className="evidence-prose"><p>We randomly sample a set of 100 papers from the evaluation set, and four human experts are asked to annotate across our three main discriminative metrics, following the same setup and input as AgenticJudge.</p><p>AgenticJudge achieves Spearman&apos;s rank correlation of ρ = 0.84 against human annotation, a raw inter-reviewer agreement of 92% and a Cohen&apos;s κ of 0.81.</p></div> },

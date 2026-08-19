@@ -54,14 +54,15 @@ export default function ResultsChapter() {
                 <span>Original to best revision · +0.65</span>
               </div>
             </section>
+
+            <EvidenceDrawer title="Results across domains and score thresholds" trigger="Per-domain trajectories and threshold counts" actionLabel="View per-domain results" tabs={[
+              { label: "Five domains", content: <><p className="drawer-intro">The upward pattern appears in every represented domain rather than being confined to one research area.</p><DomainGrid /></> },
+              { label: "Our reviewer", content: <ThresholdSlope rows={thresholds.ours} n={thresholds.n} /> },
+              { label: "Stanford Reviewer", content: <ThresholdSlope rows={thresholds.stanford} n={thresholds.n} color="var(--s-stanford)" /> },
+            ]} />
           </aside>
         </div>
 
-        <EvidenceDrawer title="Results across domains and score thresholds" trigger="Per-domain trajectories and threshold counts" tabs={[
-          { label: "Five domains", content: <><p className="drawer-intro">The upward pattern appears in every represented domain rather than being confined to one research area.</p><DomainGrid /></> },
-          { label: "Our reviewer", content: <ThresholdSlope rows={thresholds.ours} n={thresholds.n} /> },
-          { label: "Stanford Reviewer", content: <ThresholdSlope rows={thresholds.stanford} n={thresholds.n} color="var(--s-stanford)" /> },
-        ]} />
       </div>
     </section>
   );
