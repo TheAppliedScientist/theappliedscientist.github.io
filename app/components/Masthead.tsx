@@ -8,6 +8,7 @@ const NAV = [
   { href: "#reviewer", label: "Reviewer evaluation", short: "Reviewer" },
   { href: "#results", label: "Results", short: "Results" },
   { href: "#finding", label: "What revision improves", short: "Limits" },
+  { href: "#artifacts", label: "Annotated papers", short: "Papers" },
 ];
 
 /**

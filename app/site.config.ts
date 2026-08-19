@@ -12,10 +12,10 @@ export const site = {
   description:
     "A closed-loop system in which an AI scientist revises rejected papers — code, experiments, and manuscript — guided by fresh reviews from an independently benchmarked AI reviewer. Evaluated on 30 ICLR papers across five domains.",
   authors: [
-    { name: "Vidushee Vats", url: "https://koookieee.github.io" },
-    { name: "Karun Sharma", url: "https://anonymous-atom.github.io" },
-    { name: "Shengzhi Li", url: "https://lishengzhi.com" },
-    { name: "Shichao Pei", url: "https://scpei.github.io" },
+    { name: "Vidushee Vats", url: "https://koookieee.github.io", image: "/img/authors/vidushee-vats-crisp.webp" },
+    { name: "Karun Sharma", url: "https://anonymous-atom.github.io", image: "/img/authors/karun-sharma-crisp.webp" },
+    { name: "Shengzhi Li", url: "https://lishengzhi.com", image: "/img/authors/shengzhi-li-crisp.webp" },
+    { name: "Shichao Pei", url: "https://scpei.github.io", image: "/img/authors/shichao-pei-crisp.webp" },
   ],
   links: {
     paper: "/exhibits/AnonymousSubmission2027.pdf",
