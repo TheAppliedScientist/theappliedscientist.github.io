@@ -101,7 +101,13 @@ export default function AnnotatedPapersChapter() {
             <span aria-hidden="true">×</span>
             Close preview
           </button>
-          <span className="artifact-lightbox-lamp" />
+          <img
+            className="artifact-lightbox-lamp"
+            src="/img/research-lightbox-pendant.webp"
+            alt=""
+            width="900"
+            height="600"
+          />
           <span className="artifact-lightbox-beam" />
           <figure
             className="artifact-lightbox-stage"
