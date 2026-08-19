@@ -3455,7 +3455,7 @@ pre.bibtex {
   object-fit: contain;
   opacity: 0.6;
   filter: saturate(0.72) contrast(0.96);
-  transform: translateX(0.55rem);
+  transform: translate(2rem, -0.82rem);
   pointer-events: none;
   user-select: none;
 }
@@ -3494,10 +3494,11 @@ pre.bibtex {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: -1.25rem -1.55rem -1.45rem;
-  border-radius: 47% 53% 51% 49% / 52% 46% 54% 48%;
-  background: color-mix(in srgb, var(--page) 88%, transparent);
-  box-shadow: 0 0 1.45rem 1rem color-mix(in srgb, var(--page) 72%, transparent);
+  inset: -1.85rem -3.8rem -2.3rem;
+  border-radius: 43% 57% 46% 54% / 56% 44% 58% 42%;
+  background: color-mix(in srgb, var(--page) 56%, transparent);
+  box-shadow: 0 0 1.8rem 1.15rem color-mix(in srgb, var(--page) 28%, transparent);
+  filter: blur(4px);
   pointer-events: none;
 }
 
@@ -3755,8 +3756,37 @@ pre.bibtex {
   align-items: center;
   gap: 0.44rem;
   padding: 0.08rem 0.04rem 0.18rem;
+  border-bottom: 0;
   font-size: 1rem;
   cursor: zoom-in;
+}
+
+.hero-authors a > span {
+  display: inline-flex;
+  align-items: baseline;
+  border-bottom: 1px solid var(--rule-mid);
+  line-height: 1.35;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.hero-authors a > span::after {
+  content: "↗";
+  margin-left: 0.32rem;
+  color: var(--signal);
+  font-size: 0.76rem;
+  font-weight: 700;
+  transition: transform 150ms ease;
+}
+
+.hero-authors a:hover > span,
+.hero-authors a:focus-visible > span {
+  color: var(--signal-dark);
+  border-color: var(--signal);
+}
+
+.hero-authors a:hover > span::after,
+.hero-authors a:focus-visible > span::after {
+  transform: translate(0.1rem, -0.1rem);
 }
 
 .author-portrait {

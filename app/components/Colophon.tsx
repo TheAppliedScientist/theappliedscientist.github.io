@@ -16,8 +16,6 @@ export default function Colophon() {
 {`@inproceedings{appliedscientist2027,
   title     = {${site.title}},
   author    = {${site.authors.map((a) => a.name).join(" and ")}},
-  booktitle = {Proceedings of the AAAI Conference on
-               Artificial Intelligence},
   year      = {2027}
 }`}
             </pre>
