@@ -111,7 +111,7 @@ export default function FullTrajectoryReplay() {
       <section className="run-context">
         <div className="run-context-copy">
           <p>Recorded AppliedScientist run</p>
-          <h1>{replay.meta.title}</h1>
+          <h1><span className="replay-paper-label">Paper title</span>{replay.meta.title}</h1>
           <span>This is the execution record behind the five-round summary: the actual tool actions, experiment outputs, manuscript changes, and reviews in chronological order.</span>
         </div>
         <dl>

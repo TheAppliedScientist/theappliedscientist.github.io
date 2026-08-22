@@ -197,7 +197,7 @@ export default function TrajectoryReplay() {
       <section className="replay-intro" aria-labelledby="replay-title">
         <div>
           <p className="replay-kicker">Example paper revised by AppliedScientist</p>
-          <h1 id="replay-title">Under the Influence: Quantifying Persuasion and Vigilance in Large Language Models</h1>
+          <h1 id="replay-title"><span className="replay-paper-label">Paper title</span>Under the Influence: Quantifying Persuasion and Vigilance in Large Language Models</h1>
         </div>
         <div className="replay-intro-side">
           <dl className="replay-run-facts">

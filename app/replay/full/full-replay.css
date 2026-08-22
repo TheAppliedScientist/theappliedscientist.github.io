@@ -25,7 +25,7 @@ body:has(.full-replay) > .skip-link { display: none; }
   background: var(--fr-paper);
 }
 .run-context-copy > p { margin: 0 0 .22rem; color: var(--fr-red); font-size: .9rem; font-weight: 750; }
-.run-context-copy h1 { max-width: 55rem; margin: 0; font-size: clamp(1.3rem, 1.75vw, 1.75rem); font-weight: 620; line-height: 1.1; }
+.run-context-copy h1 { max-width: 55rem; margin: 0; font-size: clamp(1.1rem, 1.25vw, 1.3rem); font-weight: 620; line-height: 1.18; }
 .run-context-copy > span { display: block; max-width: 74rem; margin-top: .42rem; color: #575850; font-size: .91rem; line-height: 1.45; }
 .run-context dl { display: grid; grid-template-columns: repeat(4, minmax(6.2rem, auto)); gap: 1.3rem; margin: 0; }
 .run-context dl div { position: relative; padding-left: .7rem; }
