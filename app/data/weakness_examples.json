@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Presentation & clarity",
+    "question": "Can the reader follow the claim?",
+    "meaning": "Unclear definitions, notation, organization, or interpretation of results.",
+    "paper": "Under the Influence",
+    "review": "The metric definitions were difficult to follow, and the connection between the definitions and Table 1 was unclear.",
+    "actions": ["Worked interpretation of Table 1", "Undefined GPT-5 case explained", "Metric edge cases specified"],
+    "evidence": "Revised manuscript, p. 6 · worked interpretation of Table 1 and the undefined GPT-5 case.",
+    "snapshot": "/img/weakness-evidence/presentation-worked-interpretation.webp",
+    "snapshotAlt": "Crop from page 6 of the revised Under the Influence manuscript showing the added interpretation of Table 1 and missing-data explanation"
+  },
+  {
+    "name": "Ablations & analysis",
+    "question": "Does the claimed component actually matter?",
+    "meaning": "Missing component ablations, sensitivity tests, or mechanism analysis.",
+    "paper": "Learning Pattern-Specific Experts",
+    "review": "Reviewers asked how the number of experts and the loss weights were chosen, and whether the pattern-specific components contributed beyond RevIN.",
+    "actions": ["K, β, and cluster-loss sweeps", "Cluster loss removed at 4, 10, and 25 epochs", "RevIN on/off control"],
+    "evidence": "Revised manuscript, p. 6 · cluster-loss and epoch-budget ablations.",
+    "snapshot": "/img/weakness-evidence/ablation-cluster-loss.webp",
+    "snapshotAlt": "Crop from page 6 of the revised Learning Pattern-Specific Experts manuscript showing cluster-loss and epoch-budget ablation tables"
+  },
+  {
+    "name": "Rigor & validity",
+    "question": "Can the result be trusted?",
+    "meaning": "Confounded evaluation, weak ground truth, missing controls, or absent uncertainty estimates.",
+    "paper": "Memorization or Interpolation?",
+    "review": "The original evaluation induced memorization by fine-tuning, used a subjective threshold, and compared against negatives from a different distribution.",
+    "actions": ["Natural pretraining-memorization labels", "In-distribution Pile negatives", "Threshold-free AUC-ROC"],
+    "evidence": "Revised manuscript, p. 6 · ground-truth AUC-ROC across seven pretrained Pythia models.",
+    "snapshot": "/img/weakness-evidence/rigor-ground-truth-auc.webp",
+    "snapshotAlt": "Crop from page 6 of the revised Memorization or Interpolation manuscript showing ground-truth AUC-ROC results across seven Pythia model sizes"
+  },
+  {
+    "name": "Baselines & comparison",
+    "question": "How does it compare?",
+    "meaning": "Missing comparisons with relevant methods, defenses, or reference systems.",
+    "paper": "Context is the Key",
+    "review": "Only prompt engineering and short fine-tuning were tested; the venue reviews asked for detection and parameter-space defenses.",
+    "actions": ["Activation clustering", "Spectral signatures", "STRIP", "Fine-pruning"],
+    "evidence": "Revised manuscript, p. 8 · four added defense comparisons.",
+    "snapshot": "/img/weakness-evidence/baselines-defense-table.webp",
+    "snapshotAlt": "Crop from page 8 of the revised Context is the Key manuscript showing the added four-way defense evaluation table"
+  },
+  {
+    "name": "Scope & generalization",
+    "question": "Where else does the result hold?",
+    "meaning": "Evidence limited to one model, dataset, task, architecture, or experimental regime.",
+    "paper": "Context is the Key",
+    "review": "The attack was evaluated on a single large Vision Transformer and one training recipe, leaving architecture-level generalization unclear.",
+    "actions": ["Four ViT scales, 0.9M–40M", "Three trigger families", "Multiple poisoning rates"],
+    "evidence": "Revised manuscript, p. 6 · poisoning-rate and four-scale ViT results.",
+    "snapshot": "/img/weakness-evidence/scope-four-vit-scales.webp",
+    "snapshotAlt": "Crop from page 6 of the revised Context is the Key manuscript showing poisoning-rate results and evaluation across four Vision Transformer scales"
+  },
+  {
+    "name": "Idea / novelty",
+    "question": "Is the central contribution itself new?",
+    "meaning": "Limited novelty or significance relative to prior work.",
+    "paper": "Memorization or Interpolation?",
+    "review": "Reviewers noted that perturbation-based memorization detection had already been explored in prior work.",
+    "actions": ["Novelty claim narrowed", "Prior perturbation studies added", "Central idea kept fixed"],
+    "evidence": "Revised manuscript, p. 3 · prior perturbation work and the narrowed contribution claim.",
+    "snapshot": null,
+    "snapshotAlt": ""
+  }
+]

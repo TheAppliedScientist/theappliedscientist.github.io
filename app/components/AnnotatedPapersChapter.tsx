@@ -53,8 +53,8 @@ export default function AnnotatedPapersChapter() {
       <div className="chapter-body artifacts-body">
         <header className="artifacts-head">
           <div>
-            <p className="eyebrow">Saved revision artifacts</p>
-            <h2>Follow the revision, then inspect the changed manuscripts</h2>
+            <p className="eyebrow">AppliedScientist outputs</p>
+            <h2>Revision trajectories and annotated manuscripts</h2>
           </div>
           <p>
             The annotations highlight the changes made by AppliedScientist
@@ -63,12 +63,16 @@ export default function AnnotatedPapersChapter() {
         </header>
 
         <a className="trajectory-entry" href="/replay/">
+          <span className="trajectory-entry-count">
+            <strong>610</strong>
+            <small>recorded events</small>
+          </span>
           <span className="trajectory-entry-copy">
-            <span className="trajectory-entry-label">Full trajectory replay</span>
-            <strong>Reviewer feedback, experiments, manuscript changes, and the next review</strong>
+            <span className="trajectory-entry-label">Revision replay</span>
+            <strong>See how one paper changed across five revision rounds</strong>
             <span>
-              Replay one rejected paper from its four human reviews through five
-              saved revisions. Every step links to the recorded artifact.
+              Begin with the four human reviews of the original submission, then follow
+              the reviewer feedback, experiments, and manuscript produced in each round.
             </span>
           </span>
           <span className="trajectory-entry-versions" aria-hidden="true">
@@ -76,7 +80,7 @@ export default function AnnotatedPapersChapter() {
               <span key={version}>V{version}</span>
             ))}
           </span>
-          <span className="trajectory-entry-action">Open replay <span aria-hidden="true">→</span></span>
+          <span className="trajectory-entry-action">Open revision replay <span aria-hidden="true">→</span></span>
         </a>
 
         <ol className="artifact-manuscripts">

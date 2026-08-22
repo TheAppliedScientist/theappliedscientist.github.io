@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import TrajectoryReplay from "../components/TrajectoryReplay";
+import ReplayViews from "../components/ReplayViews";
 import "./replay.css";
+import "./full/full-replay.css";
 
 export const metadata: Metadata = {
   title: "Revision trajectory replay",
@@ -9,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function ReplayPage() {
-  return <TrajectoryReplay />;
+  return <ReplayViews />;
 }

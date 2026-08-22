@@ -194,12 +194,6 @@ export default function TrajectoryReplay() {
 
   return (
     <main className="replay-shell" id="replay-main">
-      <header className="replay-topbar">
-        <a href="/" className="replay-back">← Research overview</a>
-        <div className="replay-identity"><span>AppliedScientist</span><strong>Revision replay</strong></div>
-        <a href="/exhibits/annotated-persuasion-and-vigilance.pdf" className="replay-annotated">Annotated final paper <span aria-hidden="true">↗</span></a>
-      </header>
-
       <section className="replay-intro" aria-labelledby="replay-title">
         <div>
           <p className="replay-kicker">Example paper revised by AppliedScientist</p>
