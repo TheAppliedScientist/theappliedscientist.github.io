@@ -3,8 +3,8 @@
 Extract every number the website shows into typed JSON.
 
 RULE (per project owner): values must match the paper exactly —
-Paper_AAAI27_Latest/AnonymousSubmission2027.tex and the figures actually
-included in the submission (Paper_AAAI27_Latest/Figures/*.pdf, verified by rendering them). Local compiled
+the canonical AnonymousSubmission2027.tex and the figures actually
+included in the submission (Figures/*.pdf, verified by rendering them). Local compiled
 JSONs and RAW_RESULTS.md are an older 19-paper run and are NOT used, except
 fig3b_categories.json whose contents were verified identical to the
 submission's weakness-resolution figure.
@@ -15,9 +15,13 @@ Outputs into website/app/data/. Re-run after any paper data change:
 """
 import json
 import os
+from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-PAPER = os.path.join(ROOT, "Paper_AAAI27_Latest")
+PAPER = str(next(
+    path for path in Path(ROOT).glob("Paper_*_Latest")
+    if (path / "AnonymousSubmission2027.tex").exists()
+))
 OUT = os.path.join(ROOT, "website", "app", "data")
 os.makedirs(OUT, exist_ok=True)
 
@@ -30,7 +34,7 @@ def dump(name, obj):
 
 
 # ---------------------------------------------------------------- headline
-# All values trace to Paper_AAAI27_Latest/AnonymousSubmission2027.tex.
+# All values trace to the canonical AnonymousSubmission2027.tex.
 dump("key_stats.json", {
     "papers": 30,                    # tab:benchmark (25 rejected + 5 borderline)
     "rejected": 25,

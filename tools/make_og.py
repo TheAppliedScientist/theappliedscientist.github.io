@@ -37,7 +37,7 @@ p {{ margin-top: 24px; font-size: 19px; line-height: 1.5; color: #5A5A5E; max-wi
 .right {{ width: 440px; background: center/cover no-repeat url(data:image/png;base64,{art}); }}
 </style></head><body>
 <div class="left">
-  <div class="kicker">AAAI 2027</div>
+  <div class="kicker">AppliedScientist</div>
   <h1><span class="strike">Rejected.</span><br><span class="red">Revised.</span></h1>
   <p>AppliedScientist — an autonomous scientist and a memoryless AI reviewer,
      revising 30 rejected ICLR papers in a closed loop.</p>

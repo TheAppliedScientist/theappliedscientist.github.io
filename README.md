@@ -1,6 +1,6 @@
 # AppliedScientist — project website
 
-Production project page for the AAAI 2027 paper. Next.js 15 (App Router,
+Production project page for the AppliedScientist paper. Next.js 15 (App Router,
 TypeScript), statically exported — no server required.
 
 ## Develop
@@ -21,7 +21,7 @@ python3 -m http.server -d out 8000
 
 ## Data (paper-exact rule)
 
-Every number on the site must match `Paper_AAAI27_Latest/AnonymousSubmission2027.tex`
+Every number on the site must match the canonical `AnonymousSubmission2027.tex`
 (the submission) — not local result files, which can be stale. The single
 source of truth is:
 
