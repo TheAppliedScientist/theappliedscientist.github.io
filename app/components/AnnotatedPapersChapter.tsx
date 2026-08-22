@@ -47,20 +47,37 @@ export default function AnnotatedPapersChapter() {
     <section className="research-chapter artifacts-chapter" id="artifacts">
       <div className="chapter-index">
         <span>05</span>
-        <span>Revision outputs</span>
+        <span>Revision trajectories and outputs</span>
       </div>
 
       <div className="chapter-body artifacts-body">
         <header className="artifacts-head">
           <div>
-            <p className="eyebrow">Annotated papers</p>
-            <h2>Changes made by AppliedScientist, shown in the manuscripts</h2>
+            <p className="eyebrow">Saved revision artifacts</p>
+            <h2>Follow the revision, then inspect the changed manuscripts</h2>
           </div>
           <p>
             The annotations highlight the changes made by AppliedScientist
             during revision.
           </p>
         </header>
+
+        <a className="trajectory-entry" href="/replay/">
+          <span className="trajectory-entry-copy">
+            <span className="trajectory-entry-label">Full trajectory replay</span>
+            <strong>Reviewer feedback, experiments, manuscript changes, and the next review</strong>
+            <span>
+              Replay one rejected paper from its four human reviews through five
+              saved revisions. Every step links to the recorded artifact.
+            </span>
+          </span>
+          <span className="trajectory-entry-versions" aria-hidden="true">
+            {[0, 1, 2, 3, 4, 5].map((version) => (
+              <span key={version}>V{version}</span>
+            ))}
+          </span>
+          <span className="trajectory-entry-action">Open replay <span aria-hidden="true">→</span></span>
+        </a>
 
         <ol className="artifact-manuscripts">
           {site.annotatedPapers.map((paper, index) => (

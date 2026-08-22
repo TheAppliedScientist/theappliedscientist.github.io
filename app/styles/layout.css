@@ -3967,3 +3967,116 @@ pre.bibtex {
   .author-web-preview,
   .author-web-preview-stage { transition: none; }
 }
+
+/* Complete run replay — a prominent entry into the recorded trajectory. */
+.trajectory-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  gap: 1.1rem 2rem;
+  align-items: center;
+  margin: 0 0 clamp(2rem, 4vw, 3.8rem);
+  padding: clamp(1.35rem, 2.6vw, 2.2rem) clamp(1.3rem, 3vw, 2.8rem);
+  overflow: hidden;
+  border: 0;
+  background: #282925;
+  color: #f7f2e8;
+  box-shadow: .48rem .48rem 0 var(--signal);
+}
+
+.trajectory-entry::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 82% 30%, rgba(82, 166, 155, .16), transparent 34%);
+}
+
+.trajectory-entry:hover {
+  color: #fff;
+  border: 0;
+  box-shadow: .62rem .62rem 0 var(--signal);
+  transform: translate(-.08rem, -.08rem);
+}
+
+.trajectory-entry-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: .4rem;
+  max-width: 48rem;
+}
+
+.trajectory-entry-label {
+  color: #75c2b8;
+  font-family: var(--mono);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.trajectory-entry-copy strong {
+  max-width: 34ch;
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2.1vw, 2.05rem);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.trajectory-entry-copy > span:last-child {
+  max-width: 62ch;
+  color: #cec9bf;
+  font-size: .94rem;
+  line-height: 1.5;
+}
+
+.trajectory-entry-versions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  align-self: end;
+}
+
+.trajectory-entry-versions span {
+  width: 2.5rem;
+  height: 3.3rem;
+  margin-left: -.35rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(247, 242, 232, .25);
+  background: #353631;
+  color: #e8e3d9;
+  font-family: var(--mono);
+  font-size: .72rem;
+  box-shadow: -3px 0 7px rgba(0,0,0,.13);
+  transform: rotate(var(--version-tilt, 0deg));
+}
+
+.trajectory-entry-versions span:nth-child(2n) { --version-tilt: 2deg; }
+.trajectory-entry-versions span:nth-child(3n) { --version-tilt: -1.5deg; }
+.trajectory-entry-versions span:last-child { border-color: #75c2b8; color: #9bd8d0; }
+
+.trajectory-entry-action {
+  position: relative;
+  z-index: 1;
+  justify-self: end;
+  min-width: 9.5rem;
+  padding-top: .7rem;
+  border-top: 2px solid var(--signal);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.trajectory-entry-action span { float: right; color: #ee887b; }
+
+@media (max-width: 700px) {
+  .trajectory-entry {
+    grid-template-columns: 1fr;
+    box-shadow: .3rem .3rem 0 var(--signal);
+  }
+  .trajectory-entry-versions { order: 2; justify-self: start; }
+  .trajectory-entry-action { order: 3; justify-self: stretch; }
+}
