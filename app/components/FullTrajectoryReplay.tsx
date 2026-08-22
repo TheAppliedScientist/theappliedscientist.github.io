@@ -116,7 +116,7 @@ export default function FullTrajectoryReplay() {
         </div>
         <dl>
           <div><dt>Original human score</dt><dd>4.0<small>/10</small></dd></div>
-          <div><dt>Best saved revision</dt><dd>V₃ <small>7/10</small></dd></div>
+          <div><dt>Best saved revision</dt><dd>V₃ <strong className="best-revision-score">7<span>/10</span></strong></dd></div>
           <div><dt>Recorded events</dt><dd>{replay.meta.rawEventCount}</dd></div>
           <div><dt>Saved revisions</dt><dd>5</dd></div>
         </dl>

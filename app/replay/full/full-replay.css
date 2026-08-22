@@ -34,6 +34,8 @@ body:has(.full-replay) > .skip-link { display: none; }
 .run-context dt { color: #67665e; font-size: .73rem; font-weight: 650; line-height: 1.2; }
 .run-context dd { margin: .12rem 0 0; font-family: var(--numerals); font-size: 1.28rem; font-weight: 650; line-height: 1; white-space: nowrap; }
 .run-context dd small { font-family: var(--sans); font-size: .7rem; }
+.run-context .best-revision-score { margin-left: .42rem; color: var(--fr-teal); font-family: var(--numerals); font-size: 1.55rem; font-weight: 700; }
+.run-context .best-revision-score span { margin-left: .06rem; font-family: var(--sans); font-size: 1rem; font-weight: 650; }
 
 .replay-workspace {
   min-height: 0;
