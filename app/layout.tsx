@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./styles/tokens.css";
 import "./styles/base.css";
 import "./styles/layout.css";
@@ -48,6 +49,10 @@ export default function RootLayout({
         <Masthead />
         {children}
         <Colophon />
+        <Script
+          src="https://analytics.103-127-146-98.nip.io/tracker.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
