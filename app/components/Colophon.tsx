@@ -13,10 +13,14 @@ export default function Colophon() {
             <p className="eyebrow">AppliedScientist</p>
             <h2>Citation</h2>
             <pre className="bibtex">
-{`@inproceedings{appliedscientist2027,
-  title     = {${site.title}},
-  author    = {${site.authors.map((a) => a.name).join(" and ")}},
-  year      = {2027}
+{`@misc{vats2026appliedscientistautomatedscientificrevision,
+  title={AppliedScientist: Automated Scientific Revision Through Iterative AI Reviewing},
+  author={Vidushee Vats and Karun Sharma and Shengzhi Li and Shichao Pei},
+  year={2026},
+  eprint={2609.14738},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI},
+  url={https://arxiv.org/abs/2609.14738},
 }`}
             </pre>
             <p className="colophon-note">

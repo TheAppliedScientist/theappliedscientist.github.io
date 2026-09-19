@@ -171,7 +171,7 @@
       },
       "constructive": {
        "win": 96.5,
-       "loss": 5.0
+       "loss": 3.0
       },
       "analytical": {
        "win": 79.2,
@@ -260,7 +260,7 @@
       },
       "constructive": {
        "win": 93.1,
-       "loss": 8.5
+       "loss": 6.5
       },
       "analytical": {
        "win": 73.8,
@@ -306,8 +306,8 @@
        "loss": 20.5
       },
       "constructive": {
-       "win": 95.3,
-       "loss": 11.2
+       "win": 92.3,
+       "loss": 4.0
       },
       "analytical": {
        "win": 72.8,
@@ -348,12 +348,12 @@
        "loss": 24.1
       },
       "constructive": {
-       "win": 94.2,
-       "loss": 13.2
+       "win": 91.2,
+       "loss": 7.2
       },
       "analytical": {
        "win": 88.3,
-       "loss": 13.6
+       "loss": 8.6
       },
       "significance": {
        "win": 67.1,
@@ -369,12 +369,12 @@
        "loss": 16.8
       },
       "constructive": {
-       "win": 95.6,
-       "loss": 15.0
+       "win": 94.6,
+       "loss": 2.5
       },
       "analytical": {
        "win": 91.8,
-       "loss": 15.4
+       "loss": 5.4
       },
       "significance": {
        "win": 77.3,

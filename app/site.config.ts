@@ -18,7 +18,7 @@ export const site = {
     { name: "Shichao Pei", url: "https://scpei.github.io", image: "/img/authors/shichao-pei-crisp.webp" },
   ],
   links: {
-    paper: "/exhibits/AnonymousSubmission2027.pdf",
+    paper: "/exhibits/AppliedScientist.pdf",
     // TODO(launch): code + data release URLs
     code: "",
     data: "",
