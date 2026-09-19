@@ -19,8 +19,7 @@ export const site = {
   ],
   links: {
     paper: "/exhibits/AppliedScientist.pdf",
-    // TODO(launch): code + data release URLs
-    code: "",
+    code: "https://github.com/TheAppliedScientist/TheAppliedScientist",
     data: "",
   },
   annotatedPapers: [

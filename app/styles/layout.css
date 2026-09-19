@@ -2030,6 +2030,30 @@ body {
 
 .hero-links .primary-link span { color: #f0a59a; font-size: 1rem; }
 
+.hero-links .github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .72rem 1rem;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  color: var(--ink);
+  font-size: .88rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.hero-links .github-link:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.hero-links .github-link svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
 .hero-links > span { color: var(--ink-faint); }
 
 .revision-artifact {

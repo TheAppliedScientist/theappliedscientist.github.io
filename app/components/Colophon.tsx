@@ -34,13 +34,13 @@ export default function Colophon() {
               <span className="label">Paper</span>
               <p>
                 <a href={site.links.paper}>
-                  Submission (PDF)
+                  Paper (PDF)
                 </a>
               </p>
             </div>
             <div className="colophon-fact">
               <span className="label">Code &amp; data</span>
-              <p>{site.release.code}.</p>
+              <p><a href={site.links.code}>GitHub repository</a></p>
             </div>
             <div className="colophon-fact">
               <span className="label">Authors</span>
